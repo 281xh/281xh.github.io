@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="algorithm practise,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="just have fun">
-<meta name="keywords" content="fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qing blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/validate-binary-search-tree 思路1:中序遍历二叉树，生成序列如果">
+<meta name="keywords" content="algorithm practise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="验证二叉搜索书 lc98">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/20190730-lc98/index.html">
 <meta property="og:site_name" content="Qing blog">
-<meta property="og:description" content="just have fun">
+<meta property="og:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/validate-binary-search-tree 思路1:中序遍历二叉树，生成序列如果">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-30T04:48:17.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qing blog">
-<meta name="twitter:description" content="just have fun">
+<meta name="twitter:title" content="验证二叉搜索书 lc98">
+<meta name="twitter:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/validate-binary-search-tree 思路1:中序遍历二叉树，生成序列如果">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/30/20190730-lc98/">
 
 
 
 
 
-  <title>Qing blog</title>
+  <title>验证二叉搜索书 lc98 | Qing blog</title>
   
 
 
@@ -144,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/30/20190730-lc98/" itemprop="url">验证二叉搜索书 lc98</a></h1>
+          <h1 class="post-title" itemprop="name headline">验证二叉搜索书 lc98</h1>
         
 
         <div class="post-meta">
@@ -322,9 +320,7 @@
       
 
       
-        
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>假设一个二叉搜索树具有如下特征：<br>节点的左子树只包含小于当前节点的数。<br>节点的右子树只包含大于当前节点的数。<br>所有左子树和右子树自身必须也是二叉搜索树。</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>假设一个二叉搜索树具有如下特征：<br>节点的左子树只包含小于当前节点的数。<br>节点的右子树只包含大于当前节点的数。<br>所有左子树和右子树自身必须也是二叉搜索树。</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/validate-binary-search-tree" target="_blank" rel="noopener">https://leetcode-cn.com/problems/validate-binary-search-tree</a></p>
 <p>思路1:中序遍历二叉树，生成序列如果升序则true，else false<br>思路2:递归，每次判断右子树最小值，左子树最大值与根节点val的逻辑关系，然后进行递归</p>
 <h3 id="python3–语言优势递归生成中序序列"><a href="#python3–语言优势递归生成中序序列" class="headerlink" title="python3–语言优势递归生成中序序列"></a>python3–语言优势递归生成中序序列</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">‘’‘</span><br><span class="line"> Definition <span class="keyword">for</span> a binary tree node.</span><br><span class="line"> class TreeNode:</span><br><span class="line">     def __init__(self, x):</span><br><span class="line">         self.val = x</span><br><span class="line">         self.left = None</span><br><span class="line">         self.right = None</span><br><span class="line">’‘’</span><br><span class="line">class Solution:</span><br><span class="line">    def isValidBST(self, root: TreeNode) -&gt; bool:</span><br><span class="line">        o=self.inorder(root);</span><br><span class="line">        <span class="built_in">return</span> o==list(sorted(<span class="built_in">set</span>(o)));<span class="comment">#注意如果树中出现重复，那么一定不符合二叉搜索树</span></span><br><span class="line">        </span><br><span class="line">    def inorder(self,root: TreeNode) -&gt; list:</span><br><span class="line">        <span class="keyword">if</span> root is None:</span><br><span class="line">            <span class="built_in">return</span> [];</span><br><span class="line">        <span class="built_in">return</span> self.inorder(root.left)+[root.val]+self.inorder(root.right);</span><br></pre></td></tr></table></figure>
@@ -333,8 +329,6 @@
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>感觉是比较经典的题，尽量完全熟悉递归，非递归方法；中序序列判断升序或者记录前节点两种做法</p>
 
-          
-        
       
     </div>
     
@@ -349,134 +343,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/28/20190728/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nicolas Qing">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/dango.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Qing blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/28/20190728/" itemprop="url">A New Attempt</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-28T22:00:38+08:00">
-                2019-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/algorithm-practise/" rel="tag"># algorithm practise</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I am trying to learn more about the hexo to get my blog better,and I want to get a habit to record my achievement here! </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/28/20190728/" rel="next" title="A New Attempt">
+                <i class="fa fa-chevron-left"></i> A New Attempt
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -486,10 +382,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -497,6 +394,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -517,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -571,6 +481,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python3–语言优势递归生成中序序列"><span class="nav-number">1.1.</span> <span class="nav-text">python3–语言优势递归生成中序序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java–经典的非递归中序遍历，使用前一项判断"><span class="nav-number">1.2.</span> <span class="nav-text">java–经典的非递归中序遍历，使用前一项判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -711,6 +637,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
