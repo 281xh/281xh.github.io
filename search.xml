@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Some Daliy Complaint]]></title>
+    <url>%2F2019%2F08%2F01%2F20190801%2F</url>
+    <content type="text"><![CDATA[Feeling boring and tired after a period of time full of struggling study, especially faced with other bothering business.I think it’s common in everyone’s life, and I just want to change this situation as soon as possible.Wish a good morning.]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[验证二叉搜索书 lc98]]></title>
     <url>%2F2019%2F07%2F30%2F20190730-lc98%2F</url>
     <content type="text"><![CDATA[题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/validate-binary-search-tree 思路1:中序遍历二叉树，生成序列如果升序则true，else false思路2:递归，每次判断右子树最小值，左子树最大值与根节点val的逻辑关系，然后进行递归 python3–语言优势递归生成中序序列1234567891011121314151617‘’‘ Definition for a binary tree node. class TreeNode: def __init__(self, x): self.val = x self.left = None self.right = None’‘’class Solution: def isValidBST(self, root: TreeNode) -&gt; bool: o=self.inorder(root); return o==list(sorted(set(o)));#注意如果树中出现重复，那么一定不符合二叉搜索树 def inorder(self,root: TreeNode) -&gt; list: if root is None: return []; return self.inorder(root.left)+[root.val]+self.inorder(root.right); java–经典的非递归中序遍历，使用前一项判断123456789101112131415161718192021222324252627282930/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public boolean isValidBST(TreeNode root) &#123; Stack&lt;TreeNode&gt; stack=new Stack&lt;&gt;(); double pre=-Double.MAX_VALUE;//万恶的leetcode测试用例，写Integer.MIN_VALUE也会用例报错 while(!stack.isEmpty()||root!=null) &#123; while(root!=null) &#123; stack.push(root); root=root.left; &#125; root=stack.pop(); if(root.val&lt;=pre) return false; pre=root.val; root=root.right; &#125; return true; &#125;&#125; 总结感觉是比较经典的题，尽量完全熟悉递归，非递归方法；中序序列判断升序或者记录前节点两种做法]]></content>
