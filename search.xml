@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[贝叶斯理解+实例]]></title>
+    <url>%2F2019%2F08%2F05%2F20190805%2F</url>
+    <content type="text"><![CDATA[什么是贝叶斯英国数学家托马斯·贝叶斯在一篇论文中，为了解决一个“逆概率”问题，而提出了贝叶斯定理。 在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，比如举办了一个抽奖，抽奖桶里有10个球，其中2个白球，8个黑球，抽到白球就算你中奖。你伸手进去随便摸出1颗球，摸出中奖球的概率是多大。（2/10）而贝叶斯在他的文章中是为了解决一个“逆概率”的问题。比如上面的例子我们并不知道抽奖桶里有什么，而是摸出一个球，通过观察这个球的颜色，来预测这个桶里里白色球和黑色球的比例。 贝叶斯案例有两个一模一样的碗1号碗里有：30个巧克力和10个水果糖2号碗里有：20个巧克力和20个水果糖然后把碗盖住。随机选择一个碗，从里面摸出了一个巧克力。问题：这颗巧克力来自1号碗的概率是多少？（即，在随即取一个碗并从中摸出了一个巧克力的情况下，这个碗是1号碗的概率） 第1步，分解问题1）要求解的问题：取出的巧克力，来自1号碗的概率是多少？来自1号碗记为事件A1，来自2号碗记为事件A2取出的是巧克力，记为事件B，那么要求的问题就是P(A1|B)，即取出的是巧克力，来自1号碗的概率 2）已知信息：1号碗里有30个巧克力和10个水果糖2号碗里有20个巧克力和20个水果糖取出的是巧克力 第2步，应用贝叶斯定理1）求先验概率由于两个碗是一样的，所以在得到新信息（取出是巧克力之前），这两个碗被选中的概率相同，因此P(A1)=P(A2)=0.5,(其中A1表示来自1号碗，A2表示来自2号碗)这个概率就是’先验概率’，即没有做实验之前，来自一号碗、二号碗的概率都是0.5。 2）求可能性函数P(B|A1)/P(B)其中，P(B|A1)表示从一号碗中(A1)取出巧克力(B)的概率。因为1号碗里有30个水果糖和10个巧克力，所以P(B|A1)=30/(30+10)=75%P(B)=P(B|A1)P(A1)+P(B|A2)P(A2)=0.75*0.5+20/(20+20)*0.5=62.5%所以，可能性函数P(A1|B)/P(B)=75%/62.5%=1.2可能性函数&gt;1.表示新信息B对事情A1的可能性增强了。 3）带入贝叶斯公式求后验概率将上述计算结果，带入贝叶斯定理，即可算出P(A1|B)=60%这个例子中我们需要关注的是约束条件：抓出的是巧克力。如果没有这个约束条件在，来自一号碗这件事的概率就是50%了，因为巧克力的分布不均把概率从50%提升到60%。]]></content>
+      <categories>
+        <category>knowledge</category>
+      </categories>
+      <tags>
+        <tag>knowledge</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉树的最近公共祖先 lc236]]></title>
     <url>%2F2019%2F08%2F02%2F20190802-lc236%2F</url>
     <content type="text"><![CDATA[题目描述给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。” 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree java–递归1234567891011121314151617181920/** * Definition for a binary tree node. * public class TreeNode &#123; * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123; if(root==null||root==p||root==q) return root; TreeNode left=lowestCommonAncestor(root.left,p,q); TreeNode right=lowestCommonAncestor(root.right,p,q); if(left==null) return right; if(right==null) return left; return root; //return left==null?right:right==null?left:root; &#125;&#125; 思路：1、如果root就是p或q则root必定就是最近公共祖先2、如果1为false并且p，q分别在root的左右子树中，那么这种情况root就是最近公共祖先3、如果1，2都为false，那么p，q一定都在root的左（右）子树中，那么root一定就不是最近公共祖先了，候选人改为root.left(right)进行递归操作继续寻找即可 总结一定要好好理解递归操作，递归可以大大简化代码量，合适的递归操作也可以使得时间复杂度较低，本题的递归操作就只需要一遍遍历树，时间复杂度为O(N)，但是比较巧妙，要注重理解，最后的注释是用来简化的代码的迭代三目运算符，等效于最后的if判断，替换后代码更简洁但是消耗会略有增加。 拓展 lc235二叉搜索树的最近公共祖先与本题类似，也可以完全用通用树的方法求解，但是有了二叉搜索树的特性，可以利用这一特性快速求解，比较简单就不多赘述了 123456789class Solution &#123; public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123; if(root.val&gt;p.val&amp;&amp;root.val&gt;q.val) return lowestCommonAncestor(root.left,p,q); if(root.val&lt;p.val&amp;&amp;root.val&lt;q.val) return lowestCommonAncestor(root.right,p,q); return root; &#125;&#125;]]></content>
