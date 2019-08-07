@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[求众数 lc169]]></title>
+    <url>%2F2019%2F08%2F07%2F20190807-lc169%2F</url>
+    <content type="text"><![CDATA[题目描述给定一个大小为 n 的数组，找到其中的众数。众数是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素。 你可以假设数组是非空的，并且给定的数组总是存在众数。 示例 1: 输入: [3,2,3]输出: 3示例 2: 输入: [2,2,1,1,1,2,2]输出: 2 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/majority-element java–sort+map+摩尔投票法sort后一次遍历处理，时间复杂度O(NlogN)12345678910111213141516171819202122class Solution &#123; public int majorityElement(int[] nums) &#123; //if(nums==null)return 0;题目保证不会出现的情况 if(nums.length==1)return nums[0]; int count=1; Arrays.sort(nums); for(int i=0;i&lt;nums.length-1;i++) &#123; if(nums[i]==nums[i+1]) count++; else &#123; if(count&gt;nums.length/2) return nums[i]; else count=1; &#125; &#125; return count&gt;nums.length/2?nums[nums.length-1]:0; &#125;&#125; map一次遍历存储后输出即可，时间复杂度O(N)123456789101112131415class Solution &#123; public int majorityElement(int[] nums) &#123; Map&lt;Integer,Integer&gt; map=new HashMap(); for(int x:nums)&#123; if(map.containsKey(x)) map.put(x,map.get(x)+1); else map.put(x,1); &#125; for(int x:map.keySet())//keySet方法返回key的集合set if(map.get(x)&gt;nums.length/2) return x; return 0; &#125;&#125; 摩尔投票法O(N)1234567891011121314151617class Solution &#123; public int majorityElement(int[] nums) &#123; int count = 1; int maj = nums[0]; for (int i = 1; i &lt; nums.length; i++) &#123; if (maj == nums[i]) count++; else &#123; count--; if (count == 0) &#123; maj = nums[i + 1]; &#125; &#125; &#125; return maj; &#125;&#125; python本题投机取巧法（如果有唯一众数，那一定是排序后的中位数） 123class Solution: def majorityElement(self, nums: List[int]) -&gt; int: return sorted(nums)[len(nums)//2]; 总结本题是leetcode中的简单难度题，只是求解的话比较容易。 但是本题实际可用的方法非常多，对于求每个元素出现的次数第一反应应该是map的方法，同时本题可用的摩尔投票法也是非常亮眼，与map同级别的时间复杂度并且在本题表现中要更好 而且除了我放进来的方法以外其实还有分治的方法也能解决（O(NlogN)），希望自己能从多角度思考问题，学习多种方法解决问题。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>algorithm-list</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Pow(x,n) lc50]]></title>
     <url>%2F2019%2F08%2F06%2F20190806-lc50%2F</url>
     <content type="text"><![CDATA[题目描述实现 pow(x, n) ，即计算 x 的 n 次幂函数。示例 1:输入: 2.00000, 10输出: 1024.00000 示例 2:输入: 2.10000, 3输出: 9.26100 示例 3:输入: 2.00000, -2输出: 0.25000解释: 2-2 = 1/22 = 1/4 = 0.25 说明:-100.0 &lt; x &lt; 100.0n 是 32 位有符号整数，其数值范围是 [−231, 231 − 1] 。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/powx-n java–非递归分治循环123456789101112class Solution &#123; public double myPow(double x, int n) &#123; double res=1.0; for(int i=n;i!=0;i=i/2) &#123; if(i%2!=0) res*=x; x*=x; &#125; return n&gt;0?res:1/res; &#125;&#125; python–递归123456789class Solution: def myPow(self, x: float, n: int) -&gt; float: if n &lt; 0: x, n = 1/x, -n; if not n: #recursion termination return 1; if n % 2: return x*self.myPow(x, n-1); return self.myPow(x*x, n/2); 总结本题主要在于如何用较好的时间复杂度求解，主要是分治法的使用和递归。需要注意的有两点：一、n为负数时的情况，个人感觉直接进行一次判断后执行「x, n = 1/x, -n」比较方便。二、在递归或者分治循环的过程中要判断n为奇数还是偶数，进行if判断即可。tip：注意递归写法的重要习惯————递归终止语句]]></content>
