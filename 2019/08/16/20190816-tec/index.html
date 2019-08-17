@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="SQ Blog">
 <meta property="og:description" content="前言暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。 这次主要是springboot+springcloude+mybatis的果麦新风drif">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-16T13:48:43.997Z">
+<meta property="og:updated_time" content="2019-08-17T04:58:27.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="20190816-project experience summary">
 <meta name="twitter:description" content="前言暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。 这次主要是springboot+springcloude+mybatis的果麦新风drif">
@@ -395,6 +395,9 @@
 <p>以及pom文件中的架包依赖，这主要是修改本地与服务端使用的不同版本的架包依赖，例如我们服务端中mysql的drive驱动版本是6.0.6，但是我本地的mysql版本较新需要使用新一些的drive驱动例如8.0.11否则本地运行会报错。</p>
 <p>这里要着重说的是common模块中lombok版本不匹配问题影响了我很长时间，最后是麻烦学长才解决的，lombok是用于自动添加实体类get()/set()方法的工具，但是服务器上的java9版本的lombok版本却与我本地的java11冲突，导致maven重新生成target文件夹失败，进而导致mybatis的XML文件中引用枚举类型enum的handler失败，需要修改lombok架包版本才能解决这一系列的问题。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.18.8&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;/scope&gt; &lt;!--这条语句是老版本lombok没有的，但是缺少这条语句又是不行的--&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Addition:我对maven的命令使用也不熟悉，常用命令还是要牢记的，例如清理maven后重新安装项目以及依赖的命令；maven打包命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mvn -U clean install</span><br><span class="line"></span><br><span class="line">mvn package</span><br></pre></td></tr></table></figure>
 
 <h4 id="2、总体项目进度带来的对其他模块的依赖"><a href="#2、总体项目进度带来的对其他模块的依赖" class="headerlink" title="2、总体项目进度带来的对其他模块的依赖"></a>2、总体项目进度带来的对其他模块的依赖</h4><p>在一周前还可以本地运行的项目一周后就不行了，因为总的项目进度在向前，开发的模块可能加入了对其他开发者模块的依赖，例如我这次添加的wechat.properties以及sesame.properties。这两个配置文件缺失的话就无法运行项目，前者是微信模块，可以直接创建一个新的文件里面的内容部分留空也可以运行；后者则是alipay相关模块，里面需要内容，这一部分问学长要了一下填上也就解决了。</p>
 <h4 id="3、自己编程造成的bug"><a href="#3、自己编程造成的bug" class="headerlink" title="3、自己编程造成的bug"></a>3、自己编程造成的bug</h4><p>这一部分我是没有想到的，由于昨天是12点前开始写到1点半写完的接口（别问我之前干嘛去了，我也不知道我的时间去哪儿了= =），在第二天提交后测试的时候发现两处致命的错误。。。（没错有一处还是拼写错误），这两处错误精妙的没有引起编译报错，又确实的造成了软件错误，因为这两处错误一处出在xml文件中的拼写错误，另一处是写Express实体类的时候忘记extend Entity基础类了导致实体缺了两个公共属性。</p>
