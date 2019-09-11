@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="project experience,">
+  <meta name="keywords" content="algorithm-sliding window,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。 这次主要是springboot+springcloude+mybatis的果麦新风drif">
-<meta name="keywords" content="project experience">
+<meta name="description" content="题目描述给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。 字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。 说明： 字母异位词指字母相同，但排列不同的字符串。不考虑答案输出的顺序。示例 1: 输入:s: “cbaebabacd” p: “abc” 输出:[0, 6] 解释:起始索引等于 0 的子串是 “cb">
+<meta name="keywords" content="algorithm-sliding window">
 <meta property="og:type" content="article">
-<meta property="og:title" content="project experience summary">
-<meta property="og:url" content="http://yoursite.com/2019/08/16/20190816-tec/index.html">
+<meta property="og:title" content="找到字符串中所有字母异位词-lc438">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/20190911-lc438/index.html">
 <meta property="og:site_name" content="SQ Blog">
-<meta property="og:description" content="前言暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。 这次主要是springboot+springcloude+mybatis的果麦新风drif">
+<meta property="og:description" content="题目描述给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。 字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。 说明： 字母异位词指字母相同，但排列不同的字符串。不考虑答案输出的顺序。示例 1: 输入:s: “cbaebabacd” p: “abc” 输出:[0, 6] 解释:起始索引等于 0 的子串是 “cb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-17T13:07:17.476Z">
+<meta property="og:updated_time" content="2019-09-11T15:54:30.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="project experience summary">
-<meta name="twitter:description" content="前言暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。 这次主要是springboot+springcloude+mybatis的果麦新风drif">
+<meta name="twitter:title" content="找到字符串中所有字母异位词-lc438">
+<meta name="twitter:description" content="题目描述给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。 字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。 说明： 字母异位词指字母相同，但排列不同的字符串。不考虑答案输出的顺序。示例 1: 输入:s: “cbaebabacd” p: “abc” 输出:[0, 6] 解释:起始索引等于 0 的子串是 “cb">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/16/20190816-tec/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/11/20190911-lc438/">
 
 
 
 
 
-  <title>project experience summary | SQ Blog</title>
+  <title>找到字符串中所有字母异位词-lc438 | SQ Blog</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/20190816-tec/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/20190911-lc438/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nicolas Qing">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">project experience summary</h1>
+          <h1 class="post-title" itemprop="name headline">找到字符串中所有字母异位词-lc438</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-16T20:53:43+08:00">
-                2019-08-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T23:38:35+08:00">
+                2019-09-11
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/project-experience/" itemprop="url" rel="index">
-                    <span itemprop="name">project experience</span>
+                  <a href="/categories/algorithm-practise/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm practise</span>
                   </a>
                 </span>
 
@@ -355,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/16/20190816-tec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/16/20190816-tec/" itemprop="commentCount"></span>
+                <a href="/2019/09/11/20190911-lc438/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/11/20190911-lc438/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,35 +384,25 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>暑假提前来到学校也跟着学长的开发任务做了些事，大概是一周前还做着开发任务，隔了一周配置本地项目又是不知所措，好多熟悉的bug又遗忘了怎么处理，关键是自己寻找问题解决方案的能力还很有待提高总是浪费很多时间才能解决，总是去问学长又太麻烦他，以后我会将每一段时间的项目经验总结在这里，方便回顾学习，温故而知新。</p>
-<p>这次主要是springboot+springcloude+mybatis的果麦新风drift模块的开发，需要给订单order对应的快递单号express功能接口的实现，中间碰了很多坑。</p>
-<h3 id="踩坑经历"><a href="#踩坑经历" class="headerlink" title="踩坑经历"></a>踩坑经历</h3><h4 id="1、本地与服务器的配置不同与冲突"><a href="#1、本地与服务器的配置不同与冲突" class="headerlink" title="1、本地与服务器的配置不同与冲突"></a>1、本地与服务器的配置不同与冲突</h4><p>这一部分是每次git pull整合本地代码以后都要做的事，已经习惯了如何处理倒是没有花费太多的时间，首先检查eureka-server端的properties文件，写一个自己想用的端口号，并且做一些常规的处理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#spring.profiles.active=test   这一行是服务端代码，用于选择需要的properties版本</span></span><br><span class="line">server.port=8080</span><br><span class="line"></span><br><span class="line">eureka.instance.hostname=localhost</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.defaultZone=http://<span class="variable">$&#123;eureka.instance.hostname&#125;</span>:<span class="variable">$&#123;server.port&#125;</span>/eureka/</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。</p>
+<p>字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。</p>
+<p>说明：</p>
+<p>字母异位词指字母相同，但排列不同的字符串。<br>不考虑答案输出的顺序。<br>示例 1:</p>
+<p>输入:<br>s: “cbaebabacd” p: “abc”</p>
+<p>输出:<br>[0, 6]</p>
+<p>解释:<br>起始索引等于 0 的子串是 “cba”, 它是 “abc” 的字母异位词。<br>起始索引等于 6 的子串是 “bac”, 它是 “abc” 的字母异位词。<br> 示例 2:</p>
+<p>输入:<br>s: “abab” p: “ab”</p>
+<p>输出:<br>[0, 1, 2]</p>
+<p>解释:<br>起始索引等于 0 的子串是 “ab”, 它是 “ab” 的字母异位词。<br>起始索引等于 1 的子串是 “ba”, 它是 “ab” 的字母异位词。<br>起始索引等于 2 的子串是 “ab”, 它是 “ab” 的字母异位词。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-all-anagrams-in-a-string" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-all-anagrams-in-a-string</a></p>
+<h3 id="java–滑动窗口"><a href="#java–滑动窗口" class="headerlink" title="java–滑动窗口"></a>java–滑动窗口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; findAnagrams(String s, String p) &#123;</span><br><span class="line">        List&lt;Integer&gt; res=new ArrayList();</span><br><span class="line">        <span class="keyword">if</span>(s.length()==0||s.length()&lt;p.length())</span><br><span class="line">            <span class="built_in">return</span> res;</span><br><span class="line">        </span><br><span class="line">        int[] pnum=new int[26];</span><br><span class="line">        int[] snum=new int[26];</span><br><span class="line">        <span class="keyword">for</span>(char c:p.toCharArray())</span><br><span class="line">            pnum[c-<span class="string">'a'</span>]++;</span><br><span class="line">        <span class="keyword">for</span>(int i=0; i&lt;p.length()-1; i++)</span><br><span class="line">            snum[s.charAt(i)-<span class="string">'a'</span>]++;</span><br><span class="line">        <span class="keyword">for</span>(int i=p.length()-1; i&lt;s.length(); i++)&#123;</span><br><span class="line">            snum[s.charAt(i)-<span class="string">'a'</span>]++;</span><br><span class="line">            <span class="keyword">if</span>(isSame(pnum, snum))</span><br><span class="line">                res.add(i-p.length()+1);</span><br><span class="line">            snum[s.charAt(i-p.length()+1)-<span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean isSame(int[] a,int[] b)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;a.length;i++)</span><br><span class="line">            <span class="keyword">if</span>(a[i]!=b[i])</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后检查需要开发的drift模块的properties文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server.port=8000</span><br><span class="line"></span><br><span class="line">spring.application.name=drift-agent</span><br><span class="line"></span><br><span class="line">eureka.client.healthcheck=<span class="literal">true</span></span><br><span class="line">eureka.client.service-url.defaultZone=http://127.0.0.1:8080/eureka/</span><br><span class="line"></span><br><span class="line">mybatis.config-location=classpath:mybatis-config.xml</span><br><span class="line"></span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/gmair_drift?useLegacyDatetimeCode=<span class="literal">false</span>&amp;serverTimezone=CTT&amp;useUnicode=<span class="literal">true</span>&amp;characterEncoding=UTF-8&amp;useSSL=<span class="literal">false</span></span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=shuge888</span><br></pre></td></tr></table></figure>
+<h3 id="python3–滑动窗口"><a href="#python3–滑动窗口" class="headerlink" title="python3–滑动窗口"></a>python3–滑动窗口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findAnagrams(self, s: str, p: str) -&gt; List[int]:</span><br><span class="line">        <span class="keyword">if</span> len(s) &lt; len(p):</span><br><span class="line">    		<span class="built_in">return</span> []</span><br><span class="line">    	Num = []</span><br><span class="line">    	n = len(p)</span><br><span class="line">    	A = [0] * 26</span><br><span class="line">    	<span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    		A[ord(p[i]) - ord(<span class="string">'a'</span>)] += 1</span><br><span class="line">    		A[ord(s[i]) - ord(<span class="string">'a'</span>)] -= 1</span><br><span class="line">    	<span class="keyword">if</span> A == [0] * 26:</span><br><span class="line">    		Num.append(0)</span><br><span class="line">    	<span class="keyword">for</span> i <span class="keyword">in</span> range(n, len(s)):</span><br><span class="line">    		A[ord(s[i]) - ord(<span class="string">'a'</span>)] -= 1</span><br><span class="line">    		A[ord(s[i - n]) - ord(<span class="string">'a'</span>)] += 1</span><br><span class="line">    		<span class="keyword">if</span> A == [0] * 26:</span><br><span class="line">    			Num.append(i + 1 - n)</span><br><span class="line">    	<span class="built_in">return</span> Num</span><br></pre></td></tr></table></figure>
 
-<p>以及pom文件中的架包依赖，这主要是修改本地与服务端使用的不同版本的架包依赖，例如我们服务端中mysql的drive驱动版本是6.0.6，但是我本地的mysql版本较新需要使用新一些的drive驱动例如8.0.11否则本地运行会报错。</p>
-<p>这里要着重说的是common模块中lombok版本不匹配问题影响了我很长时间，最后是麻烦学长才解决的，lombok是用于自动添加实体类get()/set()方法的工具，但是服务器上的java9版本的lombok版本却与我本地的java11冲突，导致maven重新生成target文件夹失败，进而导致mybatis的XML文件中引用枚举类型enum的handler失败，需要修改lombok架包版本才能解决这一系列的问题。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.18.8&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;/scope&gt; &lt;!--这条语句是老版本lombok没有的，但是缺少这条语句又是不行的--&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>ord() 函数是 chr() 函数（对于 8 位的 ASCII 字符串）的配对函数，它以一个字符串（Unicode 字符）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值。实例如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;ord(<span class="string">'a'</span>)</span><br><span class="line">97</span><br><span class="line">&gt;&gt;&gt; ord(<span class="string">'€'</span>)</span><br><span class="line">8364</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>Addition:我对maven的命令使用也不熟悉，常用命令还是要牢记的，例如清理maven后重新安装项目以及依赖的命令；maven打包命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mvn -U clean install</span><br><span class="line"></span><br><span class="line">mvn package</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、总体项目进度带来的对其他模块的依赖"><a href="#2、总体项目进度带来的对其他模块的依赖" class="headerlink" title="2、总体项目进度带来的对其他模块的依赖"></a>2、总体项目进度带来的对其他模块的依赖</h4><p>在一周前还可以本地运行的项目一周后就不行了，因为总的项目进度在向前，开发的模块可能加入了对其他开发者模块的依赖，例如我这次添加的wechat.properties以及sesame.properties。这两个配置文件缺失的话就无法运行项目，前者是微信模块，可以直接创建一个新的文件里面的内容部分留空也可以运行；后者则是alipay相关模块，里面需要内容，这一部分问学长要了一下填上也就解决了。</p>
-<h4 id="3、自己编程造成的bug"><a href="#3、自己编程造成的bug" class="headerlink" title="3、自己编程造成的bug"></a>3、自己编程造成的bug</h4><p>这一部分我是没有想到的，由于昨天是12点前开始写到1点半写完的接口（别问我之前干嘛去了，我也不知道我的时间去哪儿了= =），在第二天提交后测试的时候发现两处致命的错误。。。（没错有一处还是拼写错误），这两处错误精妙的没有引起编译报错，又确实的造成了软件错误，因为这两处错误一处出在xml文件中的拼写错误，另一处是写Express实体类的时候忘记extend Entity基础类了导致实体缺了两个公共属性。</p>
-<p>回想起来这是真的蠢，再次提醒自己编码一定要细致，尽量在自己精力充沛的时候进行开发任务，不然会出很多错。</p>
-<h3 id="新学到的东西"><a href="#新学到的东西" class="headerlink" title="新学到的东西"></a>新学到的东西</h3><p>java中的枚举类型enum早就知道有这么个东西了，但是一直都没有自己用过，这次在开发任务中碰到也算是学习了一下，首先枚举类型的构造十分简单，和class类似。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public enum ExpressStatus implements EnumValue &#123;</span><br><span class="line">    DELIVERED(0),BACk(1);</span><br><span class="line"></span><br><span class="line">    private  int value;</span><br><span class="line"></span><br><span class="line">    ExpressStatus(int value)&#123;this.value=value;&#125;</span><br><span class="line"></span><br><span class="line">    public static ExpressStatus valueOf(int value)&#123; //这个方法是重载的，用于枚举值和实际值int转换</span><br><span class="line">        switch (value)&#123;</span><br><span class="line">            <span class="keyword">case</span> 0:</span><br><span class="line">                <span class="built_in">return</span> DELIVERED;</span><br><span class="line">            <span class="keyword">case</span> 1:</span><br><span class="line">                <span class="built_in">return</span> BACk;</span><br><span class="line">            default:</span><br><span class="line">                <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public  int <span class="function"><span class="title">getValue</span></span>()&#123;<span class="built_in">return</span> value;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义后在后端代码中正常使用即可，主要的不同在于mybatis的xml文件中与数据库表的映射需要调用一个handler处理，在insert方法中调用系统的EnumOrdinalTypeHandler即可正常转换插入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"insert"</span> parameterType=<span class="string">"finley.gmair.model.drift.Express"</span> useGeneratedKeys=<span class="string">"false"</span>&gt;</span><br><span class="line">    insert into gmair_drift.order_express (order_id, express_id, express_status, company, block_flag, create_time)</span><br><span class="line">    VALUES (<span class="comment">#&#123;orderId&#125;,</span></span><br><span class="line">    <span class="comment">#&#123;expressId&#125;,</span></span><br><span class="line">    <span class="comment">#&#123;status, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler&#125;,</span></span><br><span class="line">    <span class="comment">#&#123;company&#125;,</span></span><br><span class="line">    <span class="comment">#&#123;blockFlag&#125;,</span></span><br><span class="line">    <span class="comment">#&#123;createAt&#125;)</span></span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这样可以保证数据插入的正常，但是想要正常的获取数据还需要我们自己写一个handler用于数据的检验和转换，这个handler类的编写是继承并实现系统提供的abstract class，第一眼看上去好像代码很复杂但是其实都是根据实际情况overwrite，而且逻辑简单，只是抽象类的方法体比较陌生，但是其实并不难。这个ExpressStatusHandler的代码较长而且就是实现抽象类就不贴了，写好以后在mybatis中的xml文件中的”resultMap”映射标签中提供这个handler就ok了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap id=<span class="string">"expressVo"</span> <span class="built_in">type</span>=<span class="string">"finley.gmair.model.drift.Express"</span>&gt;</span><br><span class="line">    &lt;result property=<span class="string">"orderId"</span> column=<span class="string">"order_id"</span>&gt;&lt;/result&gt;</span><br><span class="line">    &lt;result property=<span class="string">"expressId"</span> column=<span class="string">"express_id"</span>&gt;&lt;/result&gt;</span><br><span class="line">    &lt;result property=<span class="string">"company"</span> column=<span class="string">"company"</span>&gt;&lt;/result&gt;</span><br><span class="line">    &lt;result property=<span class="string">"status"</span> column=<span class="string">"express_status"</span></span><br><span class="line">            typeHandler=<span class="string">"finley.gmair.mybatis.handler.ExpressStatusHandler"</span>&gt;&lt;/result&gt;</span><br><span class="line">&lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这样就实现了枚举类与数据库交互的转换。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>学习总是难受的过程，拿到任务我也总是会畏难，拖啊拖的，但是其实碰到的困难有多难克服并总结后的收获就有多大。今天是8月16号，离开学也就剩两周时间了，希望自己能好好抓紧时间少摸鱼多锄地！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>又是一道扮猪吃老虎的简单题，如果对于滑动窗口的使用不够熟练，那么这个题是有些难度的，我在空闲时间想刷一下简单题一下子就卡住了，花了些时间搞懂了滑动窗口逻辑处理的方式就很简单了。这题主要在于在窗口的移动中要维护好窗口，并且每次移动窗口都进行判断是否配对。python3和java是两种做法，但是都是基于的滑动窗口的维护，刚好可以帮助我们更好的多角度的掌握滑动窗口的使用。</p>
 
       
     </div>
@@ -430,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/project-experience/" rel="tag"># project experience</a>
+            <a href="/tags/algorithm-sliding-window/" rel="tag"># algorithm-sliding window</a>
           
         </div>
       
@@ -443,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/14/20190814-lc538/" rel="next" title="Convert BST to Greater Tree lc538">
-                <i class="fa fa-chevron-left"></i> Convert BST to Greater Tree lc538
+              <a href="/2019/09/08/20190908-lc102/" rel="next" title="Binary Tree Level Order Traversal-lc102">
+                <i class="fa fa-chevron-left"></i> Binary Tree Level Order Traversal-lc102
               </a>
             
           </div>
@@ -452,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/17/20190817-tec/" rel="prev" title="ActiveMQ+Mqtt enable publisher/subscriber">
-                ActiveMQ+Mqtt enable publisher/subscriber <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -615,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩坑经历"><span class="nav-number">2.</span> <span class="nav-text">踩坑经历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、本地与服务器的配置不同与冲突"><span class="nav-number">2.1.</span> <span class="nav-text">1、本地与服务器的配置不同与冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、总体项目进度带来的对其他模块的依赖"><span class="nav-number">2.2.</span> <span class="nav-text">2、总体项目进度带来的对其他模块的依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、自己编程造成的bug"><span class="nav-number">2.3.</span> <span class="nav-text">3、自己编程造成的bug</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新学到的东西"><span class="nav-number">3.</span> <span class="nav-text">新学到的东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java–滑动窗口"><span class="nav-number">1.1.</span> <span class="nav-text">java–滑动窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python3–滑动窗口"><span class="nav-number">1.2.</span> <span class="nav-text">python3–滑动窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -785,9 +771,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/08/16/20190816-tec/';
-          this.page.identifier = '2019/08/16/20190816-tec/';
-          this.page.title = 'project experience summary';
+          this.page.url = 'http://yoursite.com/2019/09/11/20190911-lc438/';
+          this.page.identifier = '2019/09/11/20190911-lc438/';
+          this.page.title = '找到字符串中所有字母异位词-lc438';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
