@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="SQ Blog">
 <meta property="og:description" content="题目描述给定长度为 n 的整数数组 nums，其中 n &amp;gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]输出: [24,12,8,6]说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。 进阶：你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-25T12:26:39.707Z">
+<meta property="og:updated_time" content="2019-10-07T14:44:23.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="除自身以外数组的乘积-238">
 <meta name="twitter:description" content="题目描述给定长度为 n 的整数数组 nums，其中 n &amp;gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]输出: [24,12,8,6]说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。 进阶：你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数">
@@ -389,7 +389,7 @@
 <p>输入: [1,2,3,4]<br>输出: [24,12,8,6]<br>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p>
 <p>进阶：<br>你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间。）</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/product-of-array-except-self" target="_blank" rel="noopener">https://leetcode-cn.com/problems/product-of-array-except-self</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题目其实比较简单，直观的第一想法应该是先将nums数组的元素总乘机求出然后遍历一遍数组，每个元素都对总乘机做一次除法即可。时间复杂度为O(N)<br>但是题目要求限制使用除法，并且要求相同的复杂度。题目使坏导致我们没法那么舒适的做出这道题但是其实也可以用乘法思路解决。</p>
+<h2 id="思路-amp-实现"><a href="#思路-amp-实现" class="headerlink" title="思路&amp;实现"></a>思路&amp;实现</h2><p>题目其实比较简单，直观的第一想法应该是先将nums数组的元素总乘机求出然后遍历一遍数组，每个元素都对总乘机做一次除法即可。时间复杂度为O(N)<br>但是题目要求限制使用除法，并且要求相同的复杂度。题目使坏导致我们没法那么舒适的做出这道题但是其实也可以用乘法思路解决。</p>
 <p>对于res数组的每个元素都可以将他看成是</p>
 <p><strong>[该元素左边所有元素的乘积]*[该元素右边所有元素的乘积]</strong></p>
 <p>所以我们可以采用两次循环遍历解决这个题<br>第一遍循环遍历解决所有左边元素的乘积（因为可以累乘所以这并不难）<br>第二便循环遍历解决所有右边元素的乘积（相同思路）</p>
@@ -437,6 +437,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/07/20191007-lc148/" rel="prev" title="排序链表-lc148">
+                排序链表-lc148 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +529,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -547,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -596,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python3"><span class="nav-number">1.3.</span> <span class="nav-text">python3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路-amp-实现"><span class="nav-number">2.</span> <span class="nav-text">思路&amp;实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java"><span class="nav-number">2.1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python3"><span class="nav-number">2.2.</span> <span class="nav-text">python3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
