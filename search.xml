@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[固定和的元素对-T2.6]]></title>
+    <url>%2F2019%2F10%2F23%2F20191023-T2-6%2F</url>
+    <content type="text"><![CDATA[Description输入一个数组和一个数字，在数组中查找两个数，使得它们的和正好是输入的那个数字，统计这样两个数的对数。 Input输入第一行为用例个数， 每个测试用例输入第一行是数组，每一个数用空格隔开；第二行是数字和。 Output输出这样两个数有几对。 SampleSample Input 111 2 4 7 11 0 9 1511 Sample Input 23 java1234567891011121314151617181920212223242526272829303132333435import java.util.HashMap;import java.util.Map;import java.util.Scanner;public class Main &#123; public static void main(String args[])&#123; Scanner scan = new Scanner(System.in); int a; a = scan.nextInt(); scan.nextLine(); while(a&gt;0)&#123; Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); int num=0; a--; String[] s = scan.nextLine().split(" "); int[] group = new int[s.length]; for(int j=0;j&lt;s.length;j++)&#123; group[j] = Integer.parseInt(s[j]); &#125; int b = scan.nextInt(); scan.nextLine(); for(int k = 0 ; k &lt; group.length ; k++)&#123; if(map.get(group[k])==null)&#123; map.put(b-group[k],group[k]); &#125; else&#123; num++; &#125; &#125; System.out.println(num); &#125; scan.close(); &#125;&#125; 总结&amp;思路lc原题，可以蛮力法简单粗暴，想要比较好的时间复杂度就用1、双指针法。2、借用map。原题就不多赘述了。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>after class practise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[区间第k最小-T2.5]]></title>
+    <url>%2F2019%2F10%2F23%2F20191023-T2-5%2F</url>
+    <content type="text"><![CDATA[Description找到给定数组的给定区间内的第K小的数值。 Input输入第一行为用例个数， 每个测试用例输入的第一行为数组，每一个数用空格隔开；第二行是区间（第几个数到第几个数，两头均包含），两个值用空格隔开；第三行为K值。 Output结果。 SampleSample Input 111 2 3 4 5 6 73 52 Sample Input 24 java12345678910111213141516171819202122232425262728293031323334353637import java.util.*;class Main&#123; public static void main(String[] args) &#123; Scanner scan = new Scanner(System.in); int count = Integer.parseInt(scan.nextLine()); for(int z = 0;z&lt;count;z++)&#123; String[] num1 = scan.nextLine().split(" "); int[] num = turn(num1); int start = scan.nextInt(); int end = scan.nextInt(); scan.nextLine(); //int k = scan.nextInt(); //scan.nextLine(); //String[] num2 = scan.nextLine().split(" "); //int start = Integer.parseInt(num2[0]); //int end = Integer.parseInt(num2[1]); int k = Integer.parseInt(scan.nextLine()); System.out.println(Run(num,start-1,end-1,k)); &#125; scan.close(); &#125; static int[] turn(String[] num1)&#123; int[] num = new int[num1.length]; for(int i=0;i&lt;num1.length;i++) num[i]=Integer.parseInt(num1[i]); return num; &#125; static int Run(int[] num, int start, int end, int k)&#123; int[] n = new int[end-start+1]; for(int i=start;i&lt;=end;i++) n[i-start]=num[i]; Arrays.sort(n); return n[k-1]; &#125;&#125; 总结&amp;思路较简单，略。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>after class practise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[汉诺塔-T2.4]]></title>
+    <url>%2F2019%2F10%2F23%2F20191023-T2-4%2F</url>
+    <content type="text"><![CDATA[Description汉诺塔问题中限制不能将一层塔直接从最左侧移动到最右侧，也不能直接从最右侧移动到最左侧，而是必须经过中间。求当有N层塔的时候移动步数。 Input输入第一行为用例个数， 每个测试用例输入的第一行为N。 Output移动步数。 SampleSample Input 112 Sample Input 28 java12345678910111213141516171819import java.util.Scanner;class Main&#123; public static void main(String[] args) &#123; Scanner scan = new Scanner(System.in); int count = Integer.parseInt(scan.nextLine()); for(int z = 0;z&lt;count;z++)&#123; int num = Integer.parseInt(scan.nextLine()); System.out.println(hanoi(num)); &#125; scan.close(); &#125; static int hanoi(int n)&#123; if(n == 1) return 2; else return hanoi(n-1)*3+2; &#125;&#125; 总结&amp;思路题目描述其实不太准确，给出的sample的要求其实不太一样，但是也不是很困难。 当筹码只有一个的时候需要移动两次，而n个筹码移动的次数N(n)=N(n-1)*3+2： 即先将n-1个筹码放到最右边–将第n个筹码放到中间–将n-1个筹码放到最左边–将第n个筹码放到最右边–将n-1个筹码放到最右边。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>after class practise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组和窗口-T2.3]]></title>
+    <url>%2F2019%2F10%2F22%2F20191022-T2-3%2F</url>
+    <content type="text"><![CDATA[Description给定一个整型数组arr和一个大小为w的窗口，窗口从数组最左边滑动到最右边，每次向右滑动一个位置，求出每一次滑动时窗口内最大元素的和。 Input输入第一行为用例个数， 每个测试用例输入的第一行为数组，每一个元素使用空格隔开；第二行为窗口大小。 Output输出每个测试用例结果。 SampleSample Input 114 3 5 4 3 3 6 73 Sample Input 232 java123456789101112131415161718192021222324252627282930313233343536import java.util.Scanner;class Main&#123; public static void main(String[] args) &#123; Scanner scan = new Scanner(System.in); int count = Integer.parseInt(scan.nextLine()); for(int z = 0;z&lt;count;z++)&#123; String[] num1 = scan.nextLine().split(" "); int[] num = turn(num1); int win = Integer.parseInt(scan.nextLine()); System.out.println(countWin(num,win)); &#125; scan.close(); &#125; static int[] turn(String[] num1)&#123; int[] num = new int[num1.length]; for(int i=0;i&lt;num1.length;i++) num[i]=Integer.parseInt(num1[i]); return num; &#125; static int countWin(int[] num,int win)&#123; int res = 0; for(int i=0;i&lt;num.length-win+1;i++) res+=max(num,i,win+i-1); return res; &#125; static int max(int[] num,int start,int end)&#123; int res = Integer.MIN_VALUE; for(int i=start;i&lt;=end;i++) if(res&lt;num[i]) res = num[i]; return res; &#125;&#125; 总结&amp;思路较简单，略。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>after class practise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[子矩阵问题-T2.2]]></title>
+    <url>%2F2019%2F10%2F22%2F20191022-T2-2%2F</url>
+    <content type="text"><![CDATA[Description给定一个矩形区域，每一个位置上都是1或0，求该矩阵中每一个位置上都是1的最大子矩形区域中的1的个数。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为矩阵行数n和列数m，下面的n行每一行是用空格隔开的0或1。 Output输出一个值。 SampleSample Input 113 41 0 1 11 1 1 11 1 1 0 Sample Input 26 java1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859import java.util.*;class T2&#123; public static void main(String[] args) &#123; Scanner scan = new Scanner(System.in); int count = scan.nextInt(); for(int i = 0;i &lt; count; i++)&#123; scan.nextLine();//pass the /0 String[] two = scan.nextLine().split(" "); int n = Integer.parseInt(two[0]); int m = Integer.parseInt(two[1]); int[][] matrix = new int[n][m]; for(int k1=0;k1&lt;n;k1++) for(int k2=0;k2&lt;m;k2++) matrix[k1][k2] = scan.nextInt(); System.out.println(Deal(matrix)); &#125; scan.close(); &#125; //deal with the matrix and produce arrays to deal static int Deal(int[][] matrix)&#123; if(matrix == null||matrix.length == 0||matrix[0].length == 0) return 0; int res = 0; int[] arr = new int[matrix[0].length]; for(int i=0;i&lt;matrix.length;i++)&#123; for(int j=0;j&lt;matrix[0].length;j++) arr[j] = (matrix[i][j]==0?0:arr[j]+1); res = Math.max(res, dealArra(arr)); &#125; return res; &#125; //deal with the arr and return the max area static int dealArra(int[] arr)&#123; if(arr == null||arr.length == 0) return 0; int maxArea = 0; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); for(int i=0;i&lt;arr.length;i++)&#123; while(!stack.empty()&amp;&amp;arr[i]&lt;arr[stack.peek()])&#123; int cur = stack.pop(); int left = (stack.isEmpty()?0:cur); int curArea = (i-left)*arr[cur]; maxArea = Math.max(maxArea, curArea); &#125; stack.push(i); &#125; while(!stack.isEmpty())&#123; // while the arr is finished int right = arr.length; int cur = stack.pop(); int left = (stack.isEmpty()?0:cur); int curArea = (right-left)*arr[cur]; maxArea = Math.max(maxArea, curArea); &#125; return maxArea; &#125;&#125; 总结&amp;思路解决这题需要先了解直方图最大面积的求法初次理解花了比较多时间，说起来比较复杂就留个连接：https://www.cnblogs.com/CodeCafe/p/7634233.html 了解做法以后只要将矩阵读入成int[][]后每次读一行，并将那一行的数值当作一个直方图进行处理得出一个最大值存储起来 然后每次读下一行（需要通过上一行的值进行更新），又作为直方图得到一个最大值，并和之前存储的最大值进行比较留较大的。 循环遍历矩阵的每一行后最后留下的值就是最大值。 本题难度主要在直方图最大面积的理解，并通过辅助Stack进行代码层次的实现。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>after class practise</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[子数组的取值范围-T2.1]]></title>
-    <url>%2F2019%2F10%2F22%2F20191022-T1%2F</url>
+    <url>%2F2019%2F10%2F22%2F20191022-T2-1%2F</url>
     <content type="text"><![CDATA[Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Input 26 java123456789101112131415161718192021222324252627282930313233343536373839404142import java.util.*;public class Main&#123; public static void main(String[] args) &#123; Scanner scan = new Scanner(System.in); int count = Integer.parseInt(scan.nextLine()); for(int i=0;i&lt;count;i++)&#123; int res = 0,p = 0,q = 1; String[] num = scan.nextLine().split(" "); int target = Integer.parseInt(scan.nextLine()); while(p!=num.length&amp;&amp;q!=num.length)&#123; if(p==q)&#123; q++; continue; &#125; int c = run(num,p,q); if(c&gt;target)&#123; res+=num.length-q; p++; continue; &#125; else&#123; q++; continue; &#125; &#125; System.out.println(res); &#125; scan.close(); &#125; public static int run(String[] num, int p, int q)&#123; int max=Integer.parseInt(num[p]),min=Integer.parseInt(num[p]); for(int i=p;i&lt;=q;i++)&#123; int t = Integer.parseInt(num[i]); if(t&gt;max) max=t; if(t&lt;min) min=t; &#125; return max-min; &#125;&#125; 总结&amp;思路做法是滑动窗口一次遍历数组做到时间复杂度O(N)，具体做法如下： 用两个指针l, r确定窗口边界，初始窗口大小为2只包含数组的前两位，然后对每次窗口做如下判断 1、如果窗口内的最大数-最小数&gt;num，则包含当前窗口的所有窗口必然满足条件，count += arr.length-count，然后l指针向右移一位； 2、如果窗口内的最大数-最小数&lt;num，则当前窗口不满足要求，指针l向右移一位扩大窗口后再进行判断； 3、注意窗口大小一定要&gt;=2，所以要处理l,r重合的情况； 高级算法课的课后练习和平时刷lc有较大差别，不止要想出解决的做法，还要处理好输入输出，之前一味刷lc忽略了输入输出的处理导致一开始做题真的很难受，nextInt() nextLine()换行符问题都困扰了一段时间。自己写完整程序时也要多考虑合理的模块化，方便错误定位和代码清晰性。还是要多多学习，多多练习。]]></content>
       <categories>
         <category>algorithm practise</category>
