@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Inpu">
+<meta name="description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Outp">
 <meta name="keywords" content="after class practise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="子数组的取值范围-T2.1">
 <meta property="og:url" content="http://yoursite.com/2019/10/22/20191022-T2-1/index.html">
 <meta property="og:site_name" content="SQ Blog">
-<meta property="og:description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Inpu">
+<meta property="og:description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Outp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-22T12:50:56.404Z">
+<meta property="og:updated_time" content="2019-11-14T12:15:24.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="子数组的取值范围-T2.1">
-<meta name="twitter:description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Inpu">
+<meta name="twitter:description" content="Description给定数组arr和整数num，求arr的连续子数组中满足：其最大值减去最小值的结果大于num的个数。请实现一个时间复杂度为O(length(arr))的算法。 Input输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。 Output输出一个值。 SampleSample Input 113 6 4 3 22 Sample Outp">
 
 
 
@@ -388,7 +388,7 @@
 <h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>输入第一行为测试用例个数。每一个用例有若干行，第一行为数组，每一个数用空格隔开，第二行为num。</p>
 <h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出一个值。</p>
 <h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><p>Sample Input 1<br>1<br>3 6 4 3 2<br>2</p>
-<p>Sample Input 2<br>6</p>
+<p>Sample Output 1<br>6</p>
 <h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner scan = new Scanner(System.in);</span><br><span class="line">        int count = Integer.parseInt(scan.nextLine());</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;count;i++)&#123;</span><br><span class="line">            int res = 0,p = 0,q = 1;</span><br><span class="line">            String[] num = scan.nextLine().split(<span class="string">" "</span>);</span><br><span class="line">            int target = Integer.parseInt(scan.nextLine());</span><br><span class="line">            <span class="keyword">while</span>(p!=num.length&amp;&amp;q!=num.length)&#123;</span><br><span class="line">                <span class="keyword">if</span>(p==q)&#123;</span><br><span class="line">                    q++;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                int c = run(num,p,q);</span><br><span class="line">                <span class="keyword">if</span>(c&gt;target)&#123;</span><br><span class="line">                    res+=num.length-q;</span><br><span class="line">                    p++;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    q++;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(res);</span><br><span class="line">        &#125;</span><br><span class="line">        scan.close();</span><br><span class="line">    &#125;</span><br><span class="line">    public static int run(String[] num, int p, int q)&#123;</span><br><span class="line">        int max=Integer.parseInt(num[p]),min=Integer.parseInt(num[p]);</span><br><span class="line">        <span class="keyword">for</span>(int i=p;i&lt;=q;i++)&#123;</span><br><span class="line">            int t = Integer.parseInt(num[i]);</span><br><span class="line">            <span class="keyword">if</span>(t&gt;max)</span><br><span class="line">                max=t;</span><br><span class="line">            <span class="keyword">if</span>(t&lt;min)</span><br><span class="line">                min=t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> max-min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="总结-amp-思路"><a href="#总结-amp-思路" class="headerlink" title="总结&amp;思路"></a>总结&amp;思路</h3><p>做法是滑动窗口一次遍历数组做到时间复杂度O(N)，具体做法如下：</p>
@@ -528,7 +528,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
