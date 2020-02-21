@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="algorithm-mess,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="(1)二进制中1的个数题目描述输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 java123456789public int NumberOf1(int n) &amp;#123;    int count = 0, flag = 1;    while(flag != 0)&amp;#123;        if((flag &amp;amp; n) != 0) //注意位运算符优先级">
+<meta name="keywords" content="algorithm-mess">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STOffer-Mess">
+<meta property="og:url" content="http://yoursite.com/2020/02/20/20200220-offer/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="(1)二进制中1的个数题目描述输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 java123456789public int NumberOf1(int n) &amp;#123;    int count = 0, flag = 1;    while(flag != 0)&amp;#123;        if((flag &amp;amp; n) != 0) //注意位运算符优先级">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-21T02:02:58.090Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STOffer-Mess">
+<meta name="twitter:description" content="(1)二进制中1的个数题目描述输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 java123456789public int NumberOf1(int n) &amp;#123;    int count = 0, flag = 1;    while(flag != 0)&amp;#123;        if((flag &amp;amp; n) != 0) //注意位运算符优先级">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/20/20200220-offer/">
+
+
+
+
+
+  <title>STOffer-Mess | SQ Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SQ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">good to see you</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/20200220-offer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/dango.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">STOffer-Mess</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-20T15:45:35+08:00">
+                2020-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">STOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/20/20200220-offer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/20/20200220-offer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-二进制中1的个数"><a href="#1-二进制中1的个数" class="headerlink" title="(1)二进制中1的个数"></a>(1)二进制中1的个数</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">    int count = 0, flag = 1;</span><br><span class="line">    <span class="keyword">while</span>(flag != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>((flag &amp; n) != 0) //注意位运算符优先级</span><br><span class="line">            count++;</span><br><span class="line">        flag = flag &lt;&lt; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">    int count = 0;</span><br><span class="line">    <span class="keyword">while</span>(n != 0)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        n = (n - 1) &amp; n; //n最右边的1被消去了</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结"><a href="#思路-amp-amp-总结" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>见注释，略。</p>
+<h3 id="2-数值的整数次方"><a href="#2-数值的整数次方" class="headerlink" title="(2)数值的整数次方"></a>(2)数值的整数次方</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+<p>保证base和exponent不同时为0</p>
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">    double res = 1;</span><br><span class="line">    int n = exponent;</span><br><span class="line">    <span class="keyword">if</span>(exponent == 0) <span class="built_in">return</span> 1;</span><br><span class="line">    <span class="keyword">if</span>(exponent &lt; 0) n = -n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(n != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%2 == 1)//偶数时这个<span class="keyword">if</span>只用最后一次，奇数时这个<span class="keyword">if</span>第一次和最后一次用两次</span><br><span class="line">            res*=base;</span><br><span class="line">        base*=base;</span><br><span class="line">        n = n/2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> exponent&gt;0?res:1/res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">    <span class="keyword">if</span>(exponent == 0) <span class="built_in">return</span> 1;</span><br><span class="line">    <span class="keyword">if</span>(exponent &lt; 0)&#123;</span><br><span class="line">        exponent = -exponent;</span><br><span class="line">        base = 1/base;</span><br><span class="line">    &#125;</span><br><span class="line">    double res = 1;</span><br><span class="line">    <span class="keyword">while</span>(exponent != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>(exponent%2 == 1)</span><br><span class="line">            res*=base;</span><br><span class="line">        base*=base;</span><br><span class="line">        exponent/=2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-1"><a href="#思路-amp-amp-总结-1" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>见注释，略。</p>
+<h3 id="3-调整数组顺序使奇数位于偶数前面"><a href="#3-调整数组顺序使奇数位于偶数前面" class="headerlink" title="(3)调整数组顺序使奇数位于偶数前面"></a>(3)调整数组顺序使奇数位于偶数前面</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//借助辅助空间</span><br><span class="line">public void reOrderArray(int [] array) &#123;</span><br><span class="line">    List&lt;Integer&gt; odd = new ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; even = new ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;array.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>((array[i]&amp;1) == 1)</span><br><span class="line">            odd.add(array[i]);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            even.add(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;odd.size(); i++)</span><br><span class="line">        array[i] = odd.get(i);</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;even.size(); i++)</span><br><span class="line">        array[i+odd.size()] = even.get(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//不借助辅助空间，但时间效率增加</span><br><span class="line">public void reOrderArray(int [] array) &#123;//冒泡</span><br><span class="line">    <span class="keyword">for</span>(int i=array.length-1; i&gt;=0; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=0; j&lt;i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[j]%2==0 &amp;&amp; array[j+1]%2==1)&#123;</span><br><span class="line">                int tmp = array[j];</span><br><span class="line">                array[j] = array[j+1];</span><br><span class="line">                array[j+1] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public void reOrderArray(int [] array) &#123;//插入</span><br><span class="line">        int start = 0, index = 0;</span><br><span class="line">        <span class="keyword">while</span>(index &lt; array.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[index]%2 == 1)&#123;</span><br><span class="line">                int tmp = array[index];</span><br><span class="line">                <span class="keyword">for</span>(int i=index; i&gt;start; i--)</span><br><span class="line">                    array[i] = array[i-1];</span><br><span class="line">                array[start] = tmp;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-2"><a href="#思路-amp-amp-总结-2" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>略。</p>
+<h3 id="4-链表中倒数第k个结点"><a href="#4-链表中倒数第k个结点" class="headerlink" title="(4)链表中倒数第k个结点"></a>(4)链表中倒数第k个结点</h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<h4 id="java-3"><a href="#java-3" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public ListNode FindKthToTail(ListNode head,int k) &#123;</span><br><span class="line">    ListNode p1 = head, p2 = head;</span><br><span class="line">    int i = 0;</span><br><span class="line">    <span class="keyword">for</span>( ; p2!=null; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= k)</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">        p2 = p2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> i&gt;=k ? p1:null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-3"><a href="#思路-amp-amp-总结-3" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>目前最优解：设置两个指针，p1，p2，先让p2走k步，然后再一起走，直到p2为null时，p1即为倒数第k个节点。<br>可行解：使用计数或者倒置链表的方法。</p>
+<h3 id="5-反转链表"><a href="#5-反转链表" class="headerlink" title="(5)反转链表"></a>(5)反转链表</h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个链表，反转链表后，输出新链表的表头。</p>
+<h4 id="java-4"><a href="#java-4" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public ListNode ReverseList(ListNode head) &#123;</span><br><span class="line">    ListNode pre = null, cur = head;</span><br><span class="line">    <span class="keyword">while</span>(cur != null)&#123;</span><br><span class="line">        ListNode tmp = cur.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-4"><a href="#思路-amp-amp-总结-4" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>熟记，略。</p>
+<h3 id="6-合并两个排序的链表"><a href="#6-合并两个排序的链表" class="headerlink" title="(6)合并两个排序的链表"></a>(6)合并两个排序的链表</h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p>
+<h4 id="java-5"><a href="#java-5" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//非递归</span><br><span class="line">public ListNode Merge(ListNode list1,ListNode list2) &#123;</span><br><span class="line">    ListNode dummy = new ListNode(-1), index = dummy;</span><br><span class="line">    <span class="keyword">while</span>(list1!=null &amp;&amp; list2!=null)&#123;</span><br><span class="line">        <span class="keyword">if</span>(list1.val &lt; list2.val)&#123;</span><br><span class="line">            index.next = new ListNode(list1.val);</span><br><span class="line">            list1 = list1.next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            index.next = new ListNode(list2.val);</span><br><span class="line">            list2 = list2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(list1 != null)&#123;</span><br><span class="line">        index.next = new ListNode(list1.val);</span><br><span class="line">        list1 = list1.next;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(list2 != null)&#123;</span><br><span class="line">        index.next = new ListNode(list2.val);</span><br><span class="line">        list2 = list2.next;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//递归</span><br><span class="line">public ListNode Merge(ListNode list1,ListNode list2) &#123;</span><br><span class="line">    <span class="keyword">if</span>(list1 == null)</span><br><span class="line">        <span class="built_in">return</span> list2;</span><br><span class="line">    <span class="keyword">if</span>(list2 == null)</span><br><span class="line">        <span class="built_in">return</span> list1;</span><br><span class="line">    <span class="keyword">if</span>(list1.val &lt; list2.val)&#123;</span><br><span class="line">        list1.next = Merge(list1.next,list2);</span><br><span class="line">        <span class="built_in">return</span> list1;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        list2.next = Merge(list1,list2.next);</span><br><span class="line">        <span class="built_in">return</span> list2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-5"><a href="#思路-amp-amp-总结-5" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>熟悉递归做法，略。</p>
+<h3 id="7-树的子结构"><a href="#7-树的子结构" class="headerlink" title="(7)树的子结构"></a>(7)树的子结构</h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p>
+<h4 id="java-6"><a href="#java-6" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public boolean HasSubtree(TreeNode root1,TreeNode root2) &#123;</span><br><span class="line">    <span class="keyword">if</span>(root1==null || root2==null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    boolean res = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(root1.val == root2.val)</span><br><span class="line">        res = Judge(root1,root2);</span><br><span class="line">    <span class="keyword">if</span>(res == <span class="literal">false</span>)</span><br><span class="line">        res = HasSubtree(root1.left,root2) || HasSubtree(root1.right,root2);</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">public boolean Judge(TreeNode node1, TreeNode node2)&#123;</span><br><span class="line">    <span class="keyword">if</span>(node2 == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(node1 == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(node1.val != node2.val)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">return</span> Judge(node1.left,node2.left) &amp;&amp; Judge(node1.right,node2.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-6"><a href="#思路-amp-amp-总结-6" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>注意题目是子结构，所以只要将root2对比完没有出现比对失败即可。<br>两次递归，第一次递归寻找节点相同的头节点，调用方法进行第二次递归判断是否子结构。注意中间最好使用一个布尔类型res中间值进行结果记录。</p>
+<h3 id="8-二叉树的镜像"><a href="#8-二叉树的镜像" class="headerlink" title="(8)二叉树的镜像"></a>(8)二叉树的镜像</h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>操作给定的二叉树，将其变换为源二叉树的镜像。<br>输入描述:<br>二叉树的镜像定义：源二叉树<br>            8<br>           /  <br>          6   10<br>         / \  / <br>        5  7 9 11<br>        镜像二叉树<br>            8<br>           /  <br>          10   6<br>         / \  / <br>        11 9 7  5</p>
+<h4 id="java-7"><a href="#java-7" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void Mirror(TreeNode root) &#123;</span><br><span class="line">    <span class="keyword">if</span>(root == null) </span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(root.left==null &amp;&amp; root.right==null)</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    TreeNode tmp = root.left;</span><br><span class="line">    root.left = root.right;</span><br><span class="line">    root.right = tmp;</span><br><span class="line">    </span><br><span class="line">    Mirror(root.left);</span><br><span class="line">    Mirror(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-7"><a href="#思路-amp-amp-总结-7" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>略。</p>
+<h3 id="9-顺时针打印矩阵"><a href="#9-顺时针打印矩阵" class="headerlink" title="(9)顺时针打印矩阵"></a>(9)顺时针打印矩阵</h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p>
+<h4 id="java-8"><a href="#java-8" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">    int n = matrix.length;</span><br><span class="line">    <span class="keyword">if</span>(n == 0)</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    int m = matrix[0].length;</span><br><span class="line">    int k = (Math.min(n,m)-1)/2+1; //层数</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;k; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int a=i; a&lt;m-i; a++)</span><br><span class="line">            res.add(matrix[i][a]);</span><br><span class="line">        <span class="keyword">for</span>(int a=i+1; a&lt;n-i; a++)</span><br><span class="line">            res.add(matrix[a][m-i-1]);</span><br><span class="line">        <span class="keyword">for</span>(int a=m-2-i; a&gt;=i &amp;&amp; n-i-1!=i; a--) //注意重复判断</span><br><span class="line">            res.add(matrix[n-1-i][a]);</span><br><span class="line">        <span class="keyword">for</span>(int a=n-2-i; a&gt;i &amp;&amp; m-i-1!=i; a--)</span><br><span class="line">            res.add(matrix[a][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-amp-amp-总结-8"><a href="#思路-amp-amp-总结-8" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>（1）确定层数，注意奇数偶数情况<br>（2）针对层数进行循环，循环体内是4个for遍历一组打印出当前层。<br>tip：注意后面两个for的起始受前两次输出影响要多-1，然后要进行重复判断。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm-mess/" rel="tag"># algorithm-mess</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/19/20200219-offer/" rel="next" title="STOffer-Sort&&Recursion">
+                <i class="fa fa-chevron-left"></i> STOffer-Sort&&Recursion
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/21/20200221-offer/" rel="prev" title="STOffer-Abstract">
+                STOffer-Abstract <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dango.jpg" alt="Nicolas Qing">
+            
+              <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+              <p class="site-description motion-element" itemprop="description">just have fun</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/281xh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:375411873@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-二进制中1的个数"><span class="nav-number">1.</span> <span class="nav-text">(1)二进制中1的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结"><span class="nav-number">1.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数值的整数次方"><span class="nav-number">2.</span> <span class="nav-text">(2)数值的整数次方</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">2.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-1"><span class="nav-number">2.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-调整数组顺序使奇数位于偶数前面"><span class="nav-number">3.</span> <span class="nav-text">(3)调整数组顺序使奇数位于偶数前面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">3.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-2"><span class="nav-number">3.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-链表中倒数第k个结点"><span class="nav-number">4.</span> <span class="nav-text">(4)链表中倒数第k个结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-3"><span class="nav-number">4.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-3"><span class="nav-number">4.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-反转链表"><span class="nav-number">5.</span> <span class="nav-text">(5)反转链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-4"><span class="nav-number">5.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-4"><span class="nav-number">5.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-合并两个排序的链表"><span class="nav-number">6.</span> <span class="nav-text">(6)合并两个排序的链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-5"><span class="nav-number">6.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-5"><span class="nav-number">6.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-树的子结构"><span class="nav-number">7.</span> <span class="nav-text">(7)树的子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-6"><span class="nav-number">7.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-6"><span class="nav-number">7.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-二叉树的镜像"><span class="nav-number">8.</span> <span class="nav-text">(8)二叉树的镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-7"><span class="nav-number">8.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-7"><span class="nav-number">8.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-顺时针打印矩阵"><span class="nav-number">9.</span> <span class="nav-text">(9)顺时针打印矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-8"><span class="nav-number">9.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-amp-amp-总结-8"><span class="nav-number">9.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/02/20/20200220-offer/';
+          this.page.identifier = '2020/02/20/20200220-offer/';
+          this.page.title = 'STOffer-Mess';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
