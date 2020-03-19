@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[春招腾讯面试]]></title>
-    <url>%2F2020%2F03%2F18%2F20200318-tx%2F</url>
-    <content type="text"><![CDATA[腾讯上海电话面试没有笔试没有邮件，白天打了个电话问了一下晚上能不能聊一下，晚上就直接开始面试了= =腾讯面试真的折磨，问的特别细，几个基本的问题深挖一下就给我问没了。 问题1、结合项目问了工厂模式，为什么要用工厂模式，工厂模式和使用方法封装有什么不同，工厂模式的原语和应用域是什么？感觉常规关于工厂的回答都给了，但是依旧没有达到面试官想要的深度，问了工厂模式的原语是什么，比较呆滞。 2、如果多个系统使用一个数据库的连接对象，如何应对使用多使用的冲突问题。 3、tcp与udp区别（就是个看似简单的饵），tcp如何保证数据正确与有序，差错重传是ip层还是tcp层的事情，ip层是不具备验证机制的，如果重传的报文也丢失了怎么办？总之常规的回答面试官直接不问，都是刨根问底。答：ip层的ip协议传输类似于udp，可能是无序的不可靠的，差错重传是tcp层（传输层）做的，保证数据传输的可靠。具体做法是当TCP发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。而保证数据有序的方法是TCP给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。排序的操作也可以保证重复发送的数据会被识别并丢弃。 4、进程与线程的区别（又是看起来很基础的问题），为什么线程作为独立调度的基本单位cpu却不直接给线程分配资源，给出场景一个32核的服务器上运行的一个进程里面有32个线程，那么这32个线程是否有可能同时运行，为什么会这样。]]></content>
-      <categories>
-        <category>employ</category>
-      </categories>
-      <tags>
-        <tag>spring employ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[春招美团面试]]></title>
-    <url>%2F2020%2F03%2F18%2F20200318%2F</url>
-    <content type="text"><![CDATA[美团java后端一轮面试先提一下笔试，美团笔试5道算法120分钟。首先时间上比较紧凑，一般跑通以后如果ac率比较低的话也没有多少时间能够review代码细节去提升ac率，比较看重首通ac率。其次难度较难，如果用lc难度衡量大概3道mid+2道hard具体题目隔了一段时间记不太清，大概考察点是递归，动态规划，回溯，无向图，（第五题直接没思路也没写），不过笔试似乎不做刷人，只是衡量算法水平，一般都有面试机会。 算法题（穿插在面试过程中）（1）a，b两条链表有公共部分，如何求他们的公共节点。A：剑指offer原题，可以计算长度后操作，也可以交替便利（优），博客前面的剑指offer算法总结中有 （2）给定一个数组，找出出现次数超过数组长度一半的元素，否则输出-1A：简答容易的题，但是面试官会重点关心解法的时间空间复杂度。我没有想太多，直接map计数解的，有更优解，注意给定数值范围不能无脑int。 问题想起来的写一下，不全。一面整体比较基础，不难。 1、java限定标示符以及他们的作用。（private，public，protected，缺省） 2、java八种基本数据类型。 3、final关键字作用，final修饰引用类型时引用可变吗，引用的指向的对象可变吗。 4、DNS过程。 5、操作系统中页面置换的规则，有哪些常用的页面置换算法。 6、java异常详细说一下，RuntimeException子类异常中有哪些常见的异常。 7、线程有哪些状态，状态之间如何转换。 8、java中有哪些获得对象的方法。（编译器如果加载了就new，运行时加载用到java反射机制，反射获取对象的几种方法xxxxxx） 9、用过redis吗，关系型数据库有哪些原则。 10、一些主观类题你内心中的实习生工作是怎么样的。项目过程中碰到问题是怎么样解决的。你对美团和后端开发有什么想法。我说完了，你有什么想问我的问题嘛。]]></content>
-      <categories>
-        <category>employ</category>
-      </categories>
-      <tags>
-        <tag>spring employ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[不同的二叉搜索树-lc96 & lc95]]></title>
     <url>%2F2020%2F03%2F03%2F20200303-lc96%2F</url>
     <content type="text"><![CDATA[96. 不同的二叉搜索树题目描述给定一个整数 n，求以 1 … n 为节点组成的二叉搜索树有多少种？ 示例: 输入: 3输出: 5解释:给定 n = 3, 一共有 5 种不同结构的二叉搜索树: 1 3 3 2 1 \ / / / \ 3 2 1 1 3 2 / / \ 2 1 2 3 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/unique-binary-search-trees java12345678910public int numTrees(int n) &#123; int[] dp = new int[n+1]; dp[0] = 1; dp[1] = 1; for(int i=2; i&lt;dp.length; i++) for(int j=1; j&lt;=i; j++)&#123; dp[i] += dp[j-1]*dp[i-j]; &#125; return dp[dp.length-1];&#125; python31234567def numTrees(self, n: int) -&gt; int: dp = [0]*(n+1) dp[0], dp[1] = 1, 1 for i in range(2,n+1): for j in range(1,i+1): dp[i] = dp[i] + dp[i-j]*dp[j-1] return dp[-1] 总结&amp;&amp;思路lc中等题，动态规划 假设n个节点存在二叉排序树的个数是G(n)，令f(i)为以i为根的二叉搜索树的个数 即有:G(n) = f(1) + f(2) + f(3) + f(4) + … + f(n) n为根节点，当i为根节点时，其左子树节点个数为[1,2,3,…,i-1]，右子树节点个数为[i+1,i+2,…n]，所以当i为根节点时，其左子树节点个数为i-1个，右子树节点为n-i，即f(i) = G(i-1)*G(n-i), 上面两式可得:G(n) = G(0)G(n-1)+G(1)(n-2)+…+G(n-1)*G(0) 95. 不同的二叉搜索树 II题目描述给定一个整数 n，生成所有由 1 … n 为节点所组成的二叉搜索树。 示例: 输入: 3输出:[ [1,null,3,2], [3,2,null,1], [3,1,null,null,2], [2,1,3], [1,null,2,null,3]]解释:以上的输出对应以下 5 种不同结构的二叉搜索树： 1 3 3 2 1 \ / / / \ 3 2 1 1 3 2 / / \ 2 1 2 3 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/unique-binary-search-trees-ii java123456789101112131415161718192021222324public List&lt;TreeNode&gt; generateTrees(int n) &#123; if(n &lt; 1) return new ArrayList(); List&lt;TreeNode&gt; res = Run(1,n); return res;&#125;public List&lt;TreeNode&gt; Run(int start,int end)&#123; List&lt;TreeNode&gt; res = new ArrayList&lt;&gt;(); if(start &gt; end)&#123; res.add(null); return res; &#125; for(int i=start; i&lt;=end; i++)&#123; List&lt;TreeNode&gt; llist = Run(start,i-1); List&lt;TreeNode&gt; rlist = Run(i+1,end); for(TreeNode l:llist) for(TreeNode r:rlist)&#123; TreeNode node = new TreeNode(i); node.left = l; node.right = r; res.add(node); &#125; &#125; return res;&#125; python312345678910111213141516171819def generateTrees(self, n: int) -&gt; List[TreeNode]: if n &lt; 1: return [] res = self.Run(1,n) return resdef Run(self, start, end) -&gt; List[TreeNode]: res = [] if start &gt; end: return [None] for i in range(start,end+1): llist = self.Run(start,i-1) rlist = self.Run(i+1,end) for l in llist: for r in rlist: node = TreeNode(i) node.left, node.right = l, r res.append(node) return res 总结&amp;&amp;思路lc中等题，动态规划遍历1～n，每次将遍历到的数作为根节点，计为i 递归返回左右子树，分别为0～i-1以及i+1～n 由于1～n本身就是升序序列，按照这种方式也能满足二叉搜索树的性质。]]></content>
