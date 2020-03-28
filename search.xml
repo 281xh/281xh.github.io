@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[乘积最大子数组-lc152]]></title>
+    <url>%2F2020%2F03%2F28%2F20200328-lc152%2F</url>
+    <content type="text"><![CDATA[152. 乘积最大子数组题目描述给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字）。 示例 1:输入: [2,3,-2,4]输出: 6解释: 子数组 [2,3] 有最大乘积 6。 示例 2:输入: [-2,0,-1]输出: 0解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/maximum-product-subarray java123456789101112131415public int maxProduct(int[] nums) &#123; //保存一个最大值和一个最小值，碰到负数时最小值将变成最大值 int max=nums[0], tmax=1, tmin=1; for(int i=0;i&lt;nums.length;i++)&#123; if(nums[i] &lt; 0)&#123; int tmp = tmax; tmax = tmin; tmin = tmp; &#125; tmax = Math.max(tmax*nums[i],nums[i]); tmin = Math.min(tmin*nums[i],nums[i]); max = Math.max(max,tmax); &#125; return max;&#125; python3123456789def maxProduct(self, nums: List[int]) -&gt; int: m, m1, m2 = nums[0], 1, 1 for i in range(len(nums)): if(nums[i] &lt; 0): m1, m2 = m2, m1 m1 = max(m1*nums[i],nums[i]) m2 = min(m2*nums[i],nums[i]) m = max(m1,m) return m 总结&amp;&amp;思路动态规划思路：遍历数组 -&gt; 遍历指针i，保存 以每个i为数组最后节点的子数组 的最大乘积。乘法的问题在于负负得正可能出现本来是最小的乘积由于乘上一个负数而成为最大乘积的情况。因此在过程中需要保存遍历过程中的最大值和最小值，并且每次都取最大值。]]></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+      <tags>
+        <tag>algorithm-dynamic programming</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[单词拆分-lc139]]></title>
     <url>%2F2020%2F03%2F26%2F20200326-lc139%2F</url>
     <content type="text"><![CDATA[139. 单词拆分题目描述给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。 说明： 拆分时可以重复使用字典中的单词。你可以假设字典中没有重复的单词。示例 1： 输入: s = “leetcode”, wordDict = [“leet”, “code”]输出: true解释: 返回 true 因为 “leetcode” 可以被拆分成 “leet code”。示例 2： 输入: s = “applepenapple”, wordDict = [“apple”, “pen”]输出: true解释: 返回 true 因为 “applepenapple” 可以被拆分成 “apple pen apple”。 注意你可以重复使用字典中的单词。示例 3： 输入: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]输出: false 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/word-break java123456789101112public boolean wordBreak(String s, List&lt;String&gt; wordDict) &#123; int n = s.length(); boolean[] dp = new boolean[n+1]; //dp[i]==true -&gt; s中0～i-1的子串可以被wordDict拆分 dp[0] = true; for(int i=1;i&lt;=n;i++)&#123; for(int j=0;j&lt;i;j++) if(dp[j] &amp;&amp; wordDict.contains(s.substring(j,i))) dp[i] = true; &#125; return dp[n];&#125; python312345678def wordBreak(self, s: str, wordDict: List[str]) -&gt; bool: n, dp = len(s), [False]*(len(s)+1) dp[0] = True for i in range(1,n+1): for j in range(0,i): if dp[j] and s[j:i] in wordDict: dp[i] = True return dp[n] 总结&amp;&amp;思路动态规划解题，dp[s.length()+1]思路：dp[i]==true -&gt; s中0～i-1的子串可以被wordDict拆分对于每一个i，都用j遍历0～i，确保每一份0～j+j～i都被检索过即可。]]></content>
