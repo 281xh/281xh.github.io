@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[20200426-lc300]]></title>
+    <url>%2F2020%2F04%2F26%2F20200426-lc300%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>algorithm practise</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[完全平方数-lc279]]></title>
     <url>%2F2020%2F04%2F20%2F20200420-lc279%2F</url>
     <content type="text"><![CDATA[279. 完全平方数题目描述给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, …）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。 示例 1: 输入: n = 12输出: 3解释: 12 = 4 + 4 + 4.示例 2: 输入: n = 13输出: 2解释: 13 = 4 + 9. 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/perfect-squares java12345678910111213141516171819202122public int numSquares(int n) &#123; //dp数组 int[] dp = new int[n + 1]; Arrays.fill(dp, Integer.MAX_VALUE); dp[0] = 0; //辅助数组，元素为小于目标的完全平方数 int max = (int)Math.sqrt(n) + 1; int[] helper = new int[max]; for(int i = 1; i &lt; max; i++) helper[i] = i * i; //dp过程 for(int i = 1; i &lt; dp.length; i++)&#123; for(int j = 1; j &lt; max; j++)&#123; if(i &lt; helper[j]) continue; dp[i] = Math.min(dp[i], dp[i - helper[j]] + 1); &#125; &#125; return dp[n];&#125; python312345678910def numSquares(n: int) -&gt; int: dp = [0] + [n]*n square_max = int(n**0.5) helper = [i*i for i in range(square_max+1)] for i in range(1,n+1): for j in range(1,square_max+1): if i &lt; helper[j]: continue dp[i] = min(dp[i], dp[i - helper[j]] + 1) return dp[n] 总结&amp;&amp;思路如果使用暴力法会超时并且难以解决，需要使用动态规划思想动态规划思路：dp数组的第i位表示目标数字i需要的最大完全平方数。我们需要一个完全平方数的辅助数组，其中存放可能会用到的完全平方数，数组大小为sqrt(n)原因：如果n = 12，那么他用到的最大完全平方数应该是3*3 = 9递推公式：dp[i] = min(dp[i], dp[i - helper[j]] + 1)]]></content>
