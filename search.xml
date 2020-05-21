@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[20200426-lc300]]></title>
+    <title><![CDATA[maven install debug]]></title>
+    <url>%2F2020%2F05%2F21%2F20200521-mvn%2F</url>
+    <content type="text"><![CDATA[context实习仍在远程入职期间，今天石冲同学请假了，也没有什么任务可以做，我就在想给工作机的macbook配置一下java，maven之类的环境，毕竟环境配好要是用得上可以为以后的工作节省一些时间。和我自己的机器不同，本次我全部使用了homebrew的安装方式，尽量提高效率和管理能力，但是在配置maven的时候碰到了一个问题困扰了一天多，后来发现依旧是细节问题。 bug details and solution首先正常使用brew安装maven 1brew install maven 但是在使用验证语句进行验证安装时 1234567mvn -v-------result--------The JAVA_HOME environment variable is not defined correctlyThis environment variable is needed to run this programNB: JAVA_HOME should point to a JDK not a JRE 即maven识别的JAVA_HOME环境变量没能正确指向JDK。于是我查看JAVA_HOME的路径： 123456echo $JAVA_HOME-------result--------/Library/Java/JavaVirtualMachinesjdk1.8.0_212.jdk/Contents/Home//这里有个坑，shell显示的路径JavaVirtualMachines和jdk1.8.0_212.jdk之间少了一个/，卡了我好久 果然JAVA_HOME在java配置环境变量时指向了Home目录，而maven只希望指向jdk即可。因此前往修改maven的默认JAVA_HOME路径：打开 ‎⁨Macintosh HD⁩/⁨usr⁩/local⁩/Cellar⁩/maven⁩/3.6.3_1⁩/libexec⁩/⁨bin⁩/mvn (个人路径)【注意不是 ‎⁨Macintosh HD⁩/⁨usr⁩/local⁩/Cellar⁩/maven⁩/3.6.3_1⁩/⁨bin⁩/mvn】 添加如下语句： 1234567if $mingw ; then......JAVA_HOME=`/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk`if [ -z "$JAVA_HOME" ] ; then...... 【注意shell中字符串要用``括起来，而不是单引号’’或者双引号””】 保存退出后重新验证：mvn -v 即可]]></content>
+      <categories>
+        <category>debug</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[最长上升子序列-lc300]]></title>
     <url>%2F2020%2F04%2F26%2F20200426-lc300%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗? 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/longest-increasing-subsequence 动态规划思路dp数组的每一位i代表以i为最后元素时，最长上升子序列的长度。对于dp[i],我们已经求得了dp[0 ~ i-1]，j遍历dp[0 ~ i-1]递推公式为：dp[i] = max(dp[j])+1 java123456789101112131415161718public int lengthOfLIS(int[] nums) &#123; if(nums.length == 0 || nums == null) return 0; int[] dp = new int[nums.length]; dp[0] = 1; int res = 1; for(int i = 1; i &lt; nums.length; i++)&#123; int tmax = 0; for(int j = 0; j &lt; i; j++)&#123; if(nums[i] &gt; nums[j]) tmax = Math.max(tmax, dp[j]); &#125; dp[i] = tmax + 1; res = Math.max(res, dp[i]); &#125; return res;&#125; python3123456789101112def lengthOfLIS(self, nums: List[int]) -&gt; int: if nums is None or len(nums) == 0: return 0; res, dp = 1, [1] + [0]*(len(nums)-1) for i in range(1,len(nums)): tmax = 0; for j in range(0,i): if nums[i] &gt; nums[j]: tmax = max(tmax, dp[j]) dp[i] = tmax + 1 res = max(res, dp[i]) return res]]></content>
       <categories>
         <category>algorithm practise</category>
       </categories>
+      <tags>
+        <tag>algorithm-dynamic programming</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[完全平方数-lc279]]></title>

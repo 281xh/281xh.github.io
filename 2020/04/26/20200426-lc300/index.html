@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="algorithm-dynamic programming,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="just have fun">
-<meta name="keywords" content="fun">
+<meta name="description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
+<meta name="keywords" content="algorithm-dynamic programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20200426-lc300">
+<meta property="og:title" content="最长上升子序列-lc300">
 <meta property="og:url" content="http://yoursite.com/2020/04/26/20200426-lc300/index.html">
 <meta property="og:site_name" content="SQ Blog">
-<meta property="og:description" content="just have fun">
+<meta property="og:description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-26T12:31:10.737Z">
+<meta property="og:updated_time" content="2020-04-26T13:50:54.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20200426-lc300">
-<meta name="twitter:description" content="just have fun">
+<meta name="twitter:title" content="最长上升子序列-lc300">
+<meta name="twitter:description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>20200426-lc300 | SQ Blog</title>
+  <title>最长上升子序列-lc300 | SQ Blog</title>
   
 
 
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">20200426-lc300</h1>
+          <h1 class="post-title" itemprop="name headline">最长上升子序列-lc300</h1>
         
 
         <div class="post-meta">
@@ -384,7 +384,17 @@
       
 
       
-        
+        <h2 id="300-最长上升子序列"><a href="#300-最长上升子序列" class="headerlink" title="300. 最长上升子序列"></a>300. 最长上升子序列</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
+<p>示例:</p>
+<p>输入: [10,9,2,5,3,7,101,18]<br>输出: 4<br>解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。<br>说明:</p>
+<p>可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。<br>你算法的时间复杂度应该为 O(n2) 。<br>进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-increasing-subsequence</a></p>
+<h3 id="动态规划思路"><a href="#动态规划思路" class="headerlink" title="动态规划思路"></a>动态规划思路</h3><p>dp数组的每一位i代表以i为最后元素时，最长上升子序列的长度。<br>对于dp[i],我们已经求得了dp[0 ~ i-1]，j遍历dp[0 ~ i-1]递推公式为：<br><strong>dp[i] = max(dp[j])+1</strong></p>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int lengthOfLIS(int[] nums) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.length == 0 || nums == null)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[] dp = new int[nums.length];</span><br><span class="line">    dp[0] = 1;</span><br><span class="line">    int res = 1;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int i = 1; i &lt; nums.length; i++)&#123;</span><br><span class="line">        int tmax = 0;</span><br><span class="line">        <span class="keyword">for</span>(int j = 0; j &lt; i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[j])</span><br><span class="line">                tmax = Math.max(tmax, dp[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = tmax + 1;</span><br><span class="line">        res = Math.max(res, dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="python3"><a href="#python3" class="headerlink" title="python3"></a>python3</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def lengthOfLIS(self, nums: List[int]) -&gt; int:</span><br><span class="line">    <span class="keyword">if</span> nums is None or len(nums) == 0:</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    res, dp = 1, [1] + [0]*(len(nums)-1)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(1,len(nums)):</span><br><span class="line">        tmax = 0;</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(0,i):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[j]:</span><br><span class="line">                tmax = max(tmax, dp[j])</span><br><span class="line">        dp[i] = tmax + 1</span><br><span class="line">        res = max(res, dp[i])</span><br><span class="line">    <span class="built_in">return</span> res</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -398,6 +408,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm-dynamic-programming/" rel="tag"># algorithm-dynamic programming</a>
+          
+        </div>
       
 
       
@@ -417,6 +433,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/21/20200521-mvn/" rel="prev" title="maven install debug">
+                maven install debug <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -496,7 +525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -507,7 +536,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -518,7 +547,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -557,6 +586,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#300-最长上升子序列"><span class="nav-number">1.</span> <span class="nav-text">300. 最长上升子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划思路"><span class="nav-number">1.2.</span> <span class="nav-text">动态规划思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python3"><span class="nav-number">1.2.2.</span> <span class="nav-text">python3</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -723,7 +768,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2020/04/26/20200426-lc300/';
           this.page.identifier = '2020/04/26/20200426-lc300/';
-          this.page.title = '20200426-lc300';
+          this.page.title = '最长上升子序列-lc300';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
