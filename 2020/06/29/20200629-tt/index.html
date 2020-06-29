@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="algorithm-dynamic programming,">
+  <meta name="keywords" content="practice experience,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
-<meta name="keywords" content="algorithm-dynamic programming">
+<meta name="description" content="前言实习的第三个issue终于也是结束了，这次是一个aes256加密的任务，还涉及一些hdfs的文件io操作。中间碰到了很多未知和上手带来的问题，也遇到了很多因为自己解决问题的思路不对而带来的问题，照例有时间都写下来，温故而知新。 需求从clickhouse中将数据加密后放入hdfs供平台使用。最初的设想是CH能够直接支持aes256的加密函数，就像MD5这样就会非常方便 1Select MD5(">
+<meta name="keywords" content="practice experience">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最长上升子序列-lc300">
-<meta property="og:url" content="http://yoursite.com/2020/04/26/20200426-lc300/index.html">
+<meta property="og:title" content="实习总结issue：222-aes256-encryption">
+<meta property="og:url" content="http://yoursite.com/2020/06/29/20200629-tt/index.html">
 <meta property="og:site_name" content="SQ Blog">
-<meta property="og:description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
+<meta property="og:description" content="前言实习的第三个issue终于也是结束了，这次是一个aes256加密的任务，还涉及一些hdfs的文件io操作。中间碰到了很多未知和上手带来的问题，也遇到了很多因为自己解决问题的思路不对而带来的问题，照例有时间都写下来，温故而知新。 需求从clickhouse中将数据加密后放入hdfs供平台使用。最初的设想是CH能够直接支持aes256的加密函数，就像MD5这样就会非常方便 1Select MD5(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-26T13:50:54.812Z">
+<meta property="og:updated_time" content="2020-06-29T14:47:54.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最长上升子序列-lc300">
-<meta name="twitter:description" content="300. 最长上升子序列题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18]输出: 4解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n2) 。进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?">
+<meta name="twitter:title" content="实习总结issue：222-aes256-encryption">
+<meta name="twitter:description" content="前言实习的第三个issue终于也是结束了，这次是一个aes256加密的任务，还涉及一些hdfs的文件io操作。中间碰到了很多未知和上手带来的问题，也遇到了很多因为自己解决问题的思路不对而带来的问题，照例有时间都写下来，温故而知新。 需求从clickhouse中将数据加密后放入hdfs供平台使用。最初的设想是CH能够直接支持aes256的加密函数，就像MD5这样就会非常方便 1Select MD5(">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/26/20200426-lc300/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/29/20200629-tt/">
 
 
 
 
 
-  <title>最长上升子序列-lc300 | SQ Blog</title>
+  <title>实习总结issue：222-aes256-encryption | SQ Blog</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/20200426-lc300/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/20200629-tt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nicolas Qing">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">最长上升子序列-lc300</h1>
+          <h1 class="post-title" itemprop="name headline">实习总结issue：222-aes256-encryption</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-26T20:31:10+08:00">
-                2020-04-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-29T22:43:23+08:00">
+                2020-06-29
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm-practise/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm practise</span>
+                  <a href="/categories/practice-experience/" itemprop="url" rel="index">
+                    <span itemprop="name">practice experience</span>
                   </a>
                 </span>
 
@@ -355,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/26/20200426-lc300/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/26/20200426-lc300/" itemprop="commentCount"></span>
+                <a href="/2020/06/29/20200629-tt/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/29/20200629-tt/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,16 +384,33 @@
       
 
       
-        <h2 id="300-最长上升子序列"><a href="#300-最长上升子序列" class="headerlink" title="300. 最长上升子序列"></a>300. 最长上升子序列</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
-<p>示例:</p>
-<p>输入: [10,9,2,5,3,7,101,18]<br>输出: 4<br>解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。<br>说明:</p>
-<p>可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。<br>你算法的时间复杂度应该为 O(n2) 。<br>进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/longest-increasing-subsequence" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-increasing-subsequence</a></p>
-<h3 id="动态规划思路"><a href="#动态规划思路" class="headerlink" title="动态规划思路"></a>动态规划思路</h3><p>dp数组的每一位i代表以i为最后元素时，最长上升子序列的长度。<br>对于dp[i],我们已经求得了dp[0 ~ i-1]，j遍历dp[0 ~ i-1]递推公式为：<br><strong>dp[i] = max(dp[j])+1</strong></p>
-<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int lengthOfLIS(int[] nums) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.length == 0 || nums == null)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[] dp = new int[nums.length];</span><br><span class="line">    dp[0] = 1;</span><br><span class="line">    int res = 1;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int i = 1; i &lt; nums.length; i++)&#123;</span><br><span class="line">        int tmax = 0;</span><br><span class="line">        <span class="keyword">for</span>(int j = 0; j &lt; i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[j])</span><br><span class="line">                tmax = Math.max(tmax, dp[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = tmax + 1;</span><br><span class="line">        res = Math.max(res, dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>实习的第三个issue终于也是结束了，这次是一个aes256加密的任务，还涉及一些hdfs的文件io操作。中间碰到了很多未知和上手带来的问题，也遇到了很多因为自己解决问题的思路不对而带来的问题，照例有时间都写下来，温故而知新。</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>从clickhouse中将数据加密后放入hdfs供平台使用。最初的设想是CH能够直接支持aes256的加密函数，就像MD5这样就会非常方便</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select MD5(id) from table</span><br></pre></td></tr></table></figure>
 
-<h4 id="python3"><a href="#python3" class="headerlink" title="python3"></a>python3</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def lengthOfLIS(self, nums: List[int]) -&gt; int:</span><br><span class="line">    <span class="keyword">if</span> nums is None or len(nums) == 0:</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    res, dp = 1, [1] + [0]*(len(nums)-1)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(1,len(nums)):</span><br><span class="line">        tmax = 0;</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(0,i):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[j]:</span><br><span class="line">                tmax = max(tmax, dp[j])</span><br><span class="line">        dp[i] = tmax + 1</span><br><span class="line">        res = max(res, dp[i])</span><br><span class="line">    <span class="built_in">return</span> res</span><br></pre></td></tr></table></figure>
+<p>但是事与愿违CH的内部版本还没有够到支持aes256加密函数，版本更新合并在下个月，而issue的排期等不了了，所以只能另辟蹊径。<br>CH中获取数据放入hdfs时不做加密操作，而是后续添加一个action：从hdfs中读取数据，对数据进行加密，然后写到一个新的txt文件中。<br>使用的是alpakka方式的hdfs文件io，中间设计一些source，flow，sink的流式数据操作容器，还有一些文件格式的细节，刚好以前没有接触过，好好学习一下。</p>
+<p>另外，aes256的加密sdk由上游部门的同学提供，需要自行引入sbt进行</p>
+<h3 id="开发过程与踩坑"><a href="#开发过程与踩坑" class="headerlink" title="开发过程与踩坑"></a>开发过程与踩坑</h3><h4 id="引入kms-sdk到项目"><a href="#引入kms-sdk到项目" class="headerlink" title="引入kms sdk到项目"></a>引入kms sdk到项目</h4><p>从给出的文档中找到sdk的包依赖，引入到项目sbt中。这里我拿提供的maven pom.xml依赖样式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;groupId&gt;com.bytedance&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;kms-java&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.2.2&lt;/version&gt;</span><br></pre></td></tr></table></figure>
 
+<p>将格式更改后写到对应的build.sbt文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += <span class="string">"com.bytedance"</span> % <span class="string">"kms-java"</span> % <span class="string">"1.2.2"</span></span><br></pre></td></tr></table></figure>
+
+<p>这里只给出了最直接的写法，项目中build.sbt还抽离出了一个Dependence.scala做了依赖分离，但是最终效果都是一样的。</p>
+<p>写入依赖后<strong>进行依赖刷新</strong>，这很基本也很重要，我一开始就忘记了。。。</p>
+<h4 id="基本的aes256sdk加密方法"><a href="#基本的aes256sdk加密方法" class="headerlink" title="基本的aes256sdk加密方法"></a>基本的aes256sdk加密方法</h4><p>引入sdk成功后就可以创建KMSClient和cipher对象进行加密解密操作了，创建这两个对象分别需要目标PSM和自己服务PSM，PSM需要到KMS平台进行申请权限，demo这里使用配置文件中的PSM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">val psm                  = configuration.get[String](<span class="string">"cipher.pmskey"</span>)</span><br><span class="line">val kmsclient: KMSClient = new KMSClient(psm)</span><br><span class="line">val cipher: AESCipher    = kmsclient.getDataKeyByTargetPSM(psm)</span><br><span class="line"></span><br><span class="line">val sample: String = <span class="string">"123456789"</span></span><br><span class="line">println(<span class="string">"初始数据："</span> + sample)</span><br><span class="line">val encryptWithMetaData = cipher.encryptWithMetadata(sample)</span><br><span class="line">println(<span class="string">"aes加密数据："</span> + encryptWithMetaData)</span><br><span class="line">val originText = cipher.decryptWithMetaData(encryptWithMetaData)</span><br><span class="line">println(<span class="string">"解密数据："</span> + originText)</span><br><span class="line">println(<span class="string">"========================================================="</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">==result==</span><br><span class="line">初始数据：123456789</span><br><span class="line">aes加密数据：CgwIARCAERijEiABKAESLgosKDsvQGwzfiZud3Vu6NvENsgkBDh+74rVUmjTBzxH9hNWzdeJN6U+ItYnG7EaAA==</span><br><span class="line">解密数据：123456789</span><br><span class="line">=========================================================</span><br></pre></td></tr></table></figure>
+
+<h4 id="alphakka方式的基于akka-stream的hdfs文件io基本操作"><a href="#alphakka方式的基于akka-stream的hdfs文件io基本操作" class="headerlink" title="alphakka方式的基于akka-stream的hdfs文件io基本操作"></a>alphakka方式的基于akka-stream的hdfs文件io基本操作</h4><p>数据流（stream）是用来应对大数据的一种有效的编程方式。而akka-stream是一种push模式的数据流，但是akka-stream实现了reactive-stream的back-pressure规范，回压思路使用需求队列的方式决定push不会超出程序的处理能力。<br>Alphakka: <a href="https://doc.akka.io/docs/alpakka/current/hdfs.html#compressed-data-writer" target="_blank" rel="noopener">https://doc.akka.io/docs/alpakka/current/hdfs.html#compressed-data-writer</a></p>
+<p>本次加密文件io主要是用了Source和Flow。<br>读文件打印demo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//<span class="built_in">print</span> the current data of the file <span class="keyword">in</span> hdfs</span><br><span class="line">def showData(filePath: String) = &#123;</span><br><span class="line">    val s = hdfsService</span><br><span class="line">        .getSegmentationFileSource(filePath)</span><br><span class="line">        .via(Framing.delimiter(ByteString(<span class="string">"\n"</span>), 4096, <span class="literal">true</span>))</span><br><span class="line">        .runForeach(bs =&gt; println(bs.utf8String))</span><br><span class="line">        .futureValue</span><br><span class="line">    println(<span class="string">"========================================================="</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getSegmentationFileSource(path: String): Source[ByteString, Future[IOResult]] = &#123;</span><br><span class="line">    val hdfsPath = new Path(path)</span><br><span class="line">    <span class="keyword">if</span> (!fileSystem.exists(hdfsPath)) throw BadRequestException(<span class="string">"HDFS文件不存在"</span>)</span><br><span class="line">    //    <span class="keyword">if</span> (fileSystem.getFileStatus(hdfsPath).getLen &gt; (100 &lt;&lt; 20)) throw BadRequestException(<span class="string">"文件不得超过100MB"</span>)</span><br><span class="line">    val p = <span class="string">".*.(gz|zip)$"</span>.r</span><br><span class="line">    path match &#123;</span><br><span class="line">        <span class="keyword">case</span> p(_) =&gt; HdfsSource.compressed(fileSystem, hdfsPath, codec, 32768)</span><br><span class="line">        <span class="keyword">case</span> _    =&gt; HdfsSource.data(fileSystem, hdfsPath, 32768)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读取加密后写入demo<br>这里为了更好的模块化和低耦合，对加密方法做了方法类功能的抽离。支持后续的加密方法拓展。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">println(<span class="string">"源文件内容："</span>)</span><br><span class="line">showData(path1)</span><br><span class="line">val source1 = hdfsService.uncompressFromWithAesCipher(path1, path2).futureValue</span><br><span class="line">println(<span class="string">"验证方法正确性，aes256加密后新文件内容："</span>)</span><br><span class="line">showData(path2)</span><br><span class="line"></span><br><span class="line">def uncompressFromWithAesCipher(from: String, to: String) = &#123;</span><br><span class="line">    val <span class="built_in">source</span> = getSegmentationFileSource(from)</span><br><span class="line">        .via(Framing.delimiter(ByteString(<span class="string">"\n"</span>), 8192, <span class="literal">true</span>))</span><br><span class="line">        .map(bs =&gt; bs.utf8String)</span><br><span class="line">        .map(s =&gt; cipherService.encryptToAES(s))</span><br><span class="line">        .map(ciphered =&gt; ByteString(ciphered))</span><br><span class="line">        .map(HdfsWriteMessage(_))</span><br><span class="line">    val writingFlow = HdfsFlow.data(fileSystem, SyncStrategy.none, RotationStrategy.none, pathSettings(to).withNewLine(<span class="literal">true</span>))</span><br><span class="line">    val result      = source.via(writingFlow).toMat(Sink.ignore)(Keep.right).run()</span><br><span class="line">    result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> class CipherService(configuration: Configuration)(implicit ec: ExecutionContext) &#123;</span><br><span class="line">  private val pmsKey    = configuration.get[String](<span class="string">"cipher.pmskey"</span>)</span><br><span class="line">  private lazy val kmsClient = new KMSClient(pmsKey)</span><br><span class="line">  private lazy val cipher    = kmsClient.getDataKeyByTargetPSM(pmsKey)</span><br><span class="line"></span><br><span class="line">  def encryptToAES(toCipher: String) =</span><br><span class="line">    cipher.encryptWithMetadata(toCipher)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里踩到两个坑</p>
+<p>一是一开始把kmsclient和cipher对象的创建代码放在了加密方法的里面导致开发机联调测试的时候进行加密标签圈人速度非常慢，2w的人群包数据居然需要13分钟，原来以为是加密耗时，结果是每一行需要加密的数据调用方法的时候都创建了加密对象。。没有oom也是十分的幸运了。这个坑其实很反应我缺乏实践经验，典型的学生行为，功能实现为驱动而没有考虑实际运行时的情况，希望以后能对实际情况更加敏感。</p>
+<p>二是一开始没加lazy关键字项目unit test过不了（主要我太急了也没有本地run一下，不然一下就发现问题了），然后看到sbt.test报错自以为是的认为是@Ignore注释没git push上去的问题，浪费了很多时间。事实证明写代码切记自以为是的错误定位以及钻牛角尖，可以保有自己的想法，但是要实事求是一点。</p>
 
       
     </div>
@@ -411,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm-dynamic-programming/" rel="tag"># algorithm-dynamic programming</a>
+            <a href="/tags/practice-experience/" rel="tag"># practice experience</a>
           
         </div>
       
@@ -424,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/20/20200420-lc279/" rel="next" title="完全平方数-lc279">
-                <i class="fa fa-chevron-left"></i> 完全平方数-lc279
+              <a href="/2020/06/20/20200620-designPattern/" rel="next" title="桥接模式-designPattern">
+                <i class="fa fa-chevron-left"></i> 桥接模式-designPattern
               </a>
             
           </div>
@@ -433,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/21/20200521-mvn/" rel="prev" title="maven install debug">
-                maven install debug <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#300-最长上升子序列"><span class="nav-number">1.</span> <span class="nav-text">300. 最长上升子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划思路"><span class="nav-number">1.2.</span> <span class="nav-text">动态规划思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python3"><span class="nav-number">1.2.2.</span> <span class="nav-text">python3</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发过程与踩坑"><span class="nav-number">3.</span> <span class="nav-text">开发过程与踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入kms-sdk到项目"><span class="nav-number">3.1.</span> <span class="nav-text">引入kms sdk到项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本的aes256sdk加密方法"><span class="nav-number">3.2.</span> <span class="nav-text">基本的aes256sdk加密方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alphakka方式的基于akka-stream的hdfs文件io基本操作"><span class="nav-number">3.3.</span> <span class="nav-text">alphakka方式的基于akka-stream的hdfs文件io基本操作</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -766,9 +779,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2020/04/26/20200426-lc300/';
-          this.page.identifier = '2020/04/26/20200426-lc300/';
-          this.page.title = '最长上升子序列-lc300';
+          this.page.url = 'http://yoursite.com/2020/06/29/20200629-tt/';
+          this.page.identifier = '2020/06/29/20200629-tt/';
+          this.page.title = '实习总结issue：222-aes256-encryption';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
