@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="(1)重建二叉树题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 java1234567891011121314151617&#x2F;&#x2F;直接递归求解public TreeNode reConstructBinar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STOffer-Tree">
+<meta property="og:url" content="http://example.com/2020/02/10/20200210-offer/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="(1)重建二叉树题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 java1234567891011121314151617&#x2F;&#x2F;直接递归求解public TreeNode reConstructBinar">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-10T15:41:01.000Z">
+<meta property="article:modified_time" content="2020-02-16T15:48:17.230Z">
+<meta property="article:author" content="Nicolas Qing">
+<meta property="article:tag" content="algorithm-tree">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/02/10/20200210-offer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>STOffer-Tree | SQ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SQ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">good to see you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/10/20200210-offer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dango.jpg">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content="just have fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STOffer-Tree
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-10 23:41:01" itemprop="dateCreated datePublished" datetime="2020-02-10T23:41:01+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-16 23:48:17" itemprop="dateModified" datetime="2020-02-16T23:48:17+08:00">2020-02-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STOffer/" itemprop="url" rel="index"><span itemprop="name">STOffer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-重建二叉树"><a href="#1-重建二叉树" class="headerlink" title="(1)重建二叉树"></a>(1)重建二叉树</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//直接递归求解</span><br><span class="line">public TreeNode reConstructBinaryTree(int [] pre,int [] <span class="keyword">in</span>) &#123;</span><br><span class="line">    TreeNode root = CreateTree(pre,0,pre.length-1,<span class="keyword">in</span>,0);</span><br><span class="line">    <span class="built_in">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">public TreeNode CreateTree(int[] pre,int preStart,int preEnd,int[] <span class="keyword">in</span>,int inStart)&#123;</span><br><span class="line">    <span class="keyword">if</span>(preStart &gt; preEnd)</span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    TreeNode node = new TreeNode(pre[preStart]);</span><br><span class="line">    int i;</span><br><span class="line">    <span class="keyword">for</span>(i=0;i&lt;in.length;i++)</span><br><span class="line">        <span class="keyword">if</span>(pre[preStart] == <span class="keyword">in</span>[i])</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">    node.left = CreateTree(pre,preStart+1,i-inStart+preStart,<span class="keyword">in</span>,inStart);</span><br><span class="line">    node.right = CreateTree(pre,i-inStart+preStart+1,preEnd,<span class="keyword">in</span>,i+1);</span><br><span class="line">    <span class="built_in">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//借助一个Map存储中序序列求解</span><br><span class="line">import java.util.*;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">    public TreeNode reConstructBinaryTree(int [] pre,int [] <span class="keyword">in</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;in.length;i++)</span><br><span class="line">            map.put(<span class="keyword">in</span>[i],i);</span><br><span class="line">        TreeNode root = CreateTree(pre,0,pre.length-1,0);</span><br><span class="line">        <span class="built_in">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    public TreeNode CreateTree(int[] pre,int preStart,int preEnd,int inStart)&#123;</span><br><span class="line">        <span class="keyword">if</span>(preStart &gt; preEnd)</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        TreeNode node = new TreeNode(pre[preStart]);</span><br><span class="line">        int index = map.get(pre[preStart]);</span><br><span class="line">        int leftTree = index - inStart;</span><br><span class="line">        node.left = CreateTree(pre,preStart+1,preStart+leftTree,inStart);</span><br><span class="line">        node.right = CreateTree(pre,preStart+leftTree+1,preEnd,index+1);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结"><a href="#思路-总结" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>经典二叉树数据结构算法题，使用preOrder和inOrder的特性结合递归求解。</p>
+<p>两种做法都可以，前者不需要辅助空间但是细节较多。</p>
+<p>此题要多刷熟练掌握！<strong>Important</strong></p>
+<h3 id="2-二叉树的下一个节点"><a href="#2-二叉树的下一个节点" class="headerlink" title="(2)二叉树的下一个节点"></a>(2)二叉树的下一个节点</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public TreeLinkNode GetNext(TreeLinkNode pNode)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(pNode == null) </span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    <span class="keyword">if</span>(pNode.right != null)&#123; //如果有右子树，则找右子树的最左节点</span><br><span class="line">        TreeLinkNode node = pNode.right;</span><br><span class="line">        <span class="keyword">while</span>(node.left != null) </span><br><span class="line">            node = node.left;</span><br><span class="line">        <span class="built_in">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(pNode.next != null)&#123; //没右子树，则找向上找满足把当前节点作为左子树中节点的父节点（上面已经判断过了节点没有右子树）</span><br><span class="line">        <span class="keyword">if</span>(pNode.next.left == pNode) </span><br><span class="line">            <span class="built_in">return</span> pNode.next;</span><br><span class="line">        pNode = pNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> null; //退到了根节点仍没找到，则返回null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-1"><a href="#思路-总结-1" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>需要非常熟悉中序遍历的顺序和特点。<br>中序遍历中一个节点root的下一个节点只有两种情况：<br>（1）root右子树中的最左节点<br>（2）一个节点node，他的左子树中最后遍历到的节点是root（在root不满足（1）的情况下这是自然的）</p>
+<h3 id="3-对称的二叉树"><a href="#3-对称的二叉树" class="headerlink" title="(3)对称的二叉树"></a>(3)对称的二叉树</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。</p>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//递归方法</span><br><span class="line">boolean isSymmetrical(TreeNode pRoot)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(pRoot == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">return</span> JudgeTree(pRoot.left,pRoot.right);</span><br><span class="line">&#125;</span><br><span class="line">boolean JudgeTree(TreeNode node1, TreeNode node2)&#123;</span><br><span class="line">    <span class="keyword">if</span>(node1 == null)</span><br><span class="line">        <span class="built_in">return</span> node2 == null;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(node2 == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(node1.val != node2.val)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">return</span> JudgeTree(node1.left,node2.right) &amp;&amp; JudgeTree(node1.right,node2.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//DFS非递归方法，借助栈实现（BFS借助Queue实现，类似，略）</span><br><span class="line">boolean isSymmetricalDFS(TreeNode pRoot)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(pRoot == null) <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    Stack&lt;TreeNode&gt; s = new Stack&lt;&gt;();</span><br><span class="line">    s.push(pRoot.left);</span><br><span class="line">    s.push(pRoot.right);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty()) &#123;</span><br><span class="line">        TreeNode right = s.pop();//成对取出</span><br><span class="line">        TreeNode left = s.pop();</span><br><span class="line">        <span class="keyword">if</span>(left == null &amp;&amp; right == null) <span class="built_in">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(left == null || right == null) <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(left.val != right.val) <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        //成对插入</span><br><span class="line">        s.push(left.left);</span><br><span class="line">        s.push(right.right);</span><br><span class="line">        s.push(left.right);</span><br><span class="line">        s.push(right.left);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-2"><a href="#思路-总结-2" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>首先根节点以及其左右子树，左子树的左子树和右子树的右子树相同<br>左子树的右子树和右子树的左子树相同即可，采用递归<br>非递归也可，采用栈或队列存取各级子树根节点</p>
+<h3 id="4-按之字形次序打印二叉树"><a href="#4-按之字形次序打印二叉树" class="headerlink" title="(4)按之字形次序打印二叉树"></a>(4)按之字形次序打印二叉树</h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。</p>
+<h4 id="java-3"><a href="#java-3" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;ArrayList&lt;Integer&gt; &gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">    <span class="keyword">if</span>(pRoot == null)</span><br><span class="line">        <span class="built_in">return</span> new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">    boolean flag = <span class="literal">true</span>;</span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(pRoot);</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;TreeNode&gt; t = new ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            TreeNode tn = queue.poll();</span><br><span class="line">            <span class="keyword">if</span>(tn != null)&#123;</span><br><span class="line">                tmp.add(tn.val);</span><br><span class="line">                t.add(tn);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="literal">true</span> &amp;&amp; tmp.size()!=0)&#123;</span><br><span class="line">            res.add(tmp);</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(flag==<span class="literal">false</span> &amp;&amp; tmp.size()!=0)&#123;</span><br><span class="line">            res.add(ReverseList(tmp));</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;t.size();i++)&#123;</span><br><span class="line">            queue.add(t.get(i).left);</span><br><span class="line">            queue.add(t.get(i).right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">public ArrayList&lt;Integer&gt; ReverseList(ArrayList&lt;Integer&gt; list)&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span>(int i=list.size()-1;i&gt;=0;i--)</span><br><span class="line">        res.add(list.get(i));</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-3"><a href="#思路-总结-3" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>层序遍历输出的基础上添加一个标志位在偶数行的情况下进行逆序即可，注意细节。</p>
+<h3 id="5-把二叉树打印成多行"><a href="#5-把二叉树打印成多行" class="headerlink" title="(5)把二叉树打印成多行"></a>(5)把二叉树打印成多行</h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。</p>
+<h4 id="java-4"><a href="#java-4" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//层序遍历方法</span><br><span class="line">ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">    <span class="keyword">if</span>(pRoot == null) </span><br><span class="line">        <span class="built_in">return</span> new ArrayList&lt;ArrayList&lt;Integer&gt; &gt;();</span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = new ArrayList&lt;ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(pRoot);</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;TreeNode&gt; t = new ArrayList&lt;TreeNode&gt;();</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            TreeNode tn = queue.poll();</span><br><span class="line">            <span class="keyword">if</span>(tn != null) &#123;</span><br><span class="line">                tmp.add(tn.val);</span><br><span class="line">                t.add(tn);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;t.size();i++)&#123;</span><br><span class="line">            queue.add(t.get(i).left);</span><br><span class="line">            queue.add(t.get(i).right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tmp.size() &gt; 0) res.add(tmp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//DFS方法</span><br><span class="line">ArrayList&lt;ArrayList&lt;Integer&gt;&gt; Print(TreeNode pRoot) &#123;</span><br><span class="line">    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">    DFS(pRoot,res,1);</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">void DFS(TreeNode root,ArrayList&lt;ArrayList&lt;Integer&gt;&gt; res,int depth)&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == null) <span class="built_in">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(depth &gt; res.size()) </span><br><span class="line">        res.add(new ArrayList&lt;Integer&gt;());</span><br><span class="line">    res.get(depth-1).add(root.val);</span><br><span class="line">    DFS(root.left,res,depth+1);</span><br><span class="line">    DFS(root.right,res,depth+1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-4"><a href="#思路-总结-4" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>经典题，常规思维使用层序遍历可以解决，做法注意细节要牢记。<br>还可以使用DFS的方法用递归做，比较巧妙，代码简洁。</p>
+<h3 id="6-序列化二叉树"><a href="#6-序列化二叉树" class="headerlink" title="(6)序列化二叉树"></a>(6)序列化二叉树</h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>请实现两个函数，分别用来序列化和反序列化二叉树</p>
+<p>二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），以 ！ 表示一个结点值的结束（value!）。</p>
+<p>二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。</p>
+<h4 id="java-5"><a href="#java-5" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int index = -1; //计数器</span><br><span class="line">String Serialize(TreeNode root) &#123;</span><br><span class="line">    StringBuffer sb = new StringBuffer();</span><br><span class="line">    <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">        sb.append(<span class="string">&quot;#,&quot;</span>);</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    sb.append(root.val+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    sb.append(Serialize(root.left));</span><br><span class="line">    sb.append(Serialize(root.right));</span><br><span class="line">    <span class="built_in">return</span> sb.toString();</span><br><span class="line">&#125;</span><br><span class="line">TreeNode Deserialize(String str) &#123;</span><br><span class="line">    <span class="keyword">if</span>(str == null || str.length()==0)</span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    index++;</span><br><span class="line">    String[] arr = str.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    TreeNode root = null;</span><br><span class="line">    <span class="keyword">if</span>(!arr[index].equals(<span class="string">&quot;#&quot;</span>))&#123; //String用equals切记</span><br><span class="line">        root = new TreeNode(Integer.valueOf(arr[index])); //类型转换</span><br><span class="line">        root.left = Deserialize(str);</span><br><span class="line">        root.right = Deserialize(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-5"><a href="#思路-总结-5" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>需要选择一种遍历二叉树的方式（我使用了先序，中后层也都可以），然后按照这种遍历方式去序列化二叉树，在空节点的地方要插入一个标识。<br>反序列化时，按照遍历方式反相解析即可<br><strong>任意一种遍历方式加上空节点标识即可确定一棵二叉树</strong></p>
+<h3 id="7-二叉搜索树的第k个节点"><a href="#7-二叉搜索树的第k个节点" class="headerlink" title="(7)二叉搜索树的第k个节点"></a>(7)二叉搜索树的第k个节点</h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）    中，按结点数值大小顺序第三小结点的值为4。</p>
+<h4 id="java-6"><a href="#java-6" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//递归中序遍历</span><br><span class="line">int n; //计数</span><br><span class="line">TreeNode res;</span><br><span class="line">TreeNode KthNode(TreeNode pRoot, int k)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(pRoot==null || k==0) <span class="built_in">return</span> null;</span><br><span class="line">    n = k;</span><br><span class="line">    Judge(pRoot);</span><br><span class="line">    <span class="keyword">if</span>(res == null) </span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">public void Judge(TreeNode root)&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == null) <span class="built_in">return</span>;//递归终止条件</span><br><span class="line">    Judge(root.left);</span><br><span class="line">    <span class="keyword">if</span>(n == 1)&#123;</span><br><span class="line">        res = root;</span><br><span class="line">        n = -1;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> n--;</span><br><span class="line">    Judge(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TreeNode KthNode(TreeNode pRoot, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        //非递归中序遍历，借助栈</span><br><span class="line">        <span class="keyword">if</span>(pRoot==null || k==0)</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty() || pRoot!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pRoot != null)&#123;</span><br><span class="line">                stack.push(pRoot);</span><br><span class="line">                pRoot = pRoot.left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                pRoot = stack.pop();</span><br><span class="line">                <span class="keyword">if</span>(--k == 0)</span><br><span class="line">                    <span class="built_in">return</span> pRoot;</span><br><span class="line">                pRoot = pRoot.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-6"><a href="#思路-总结-6" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>充分利用二叉搜索树的条件，二叉搜索树的中序遍历序列是一个升序序列。</p>
+<h3 id="8-数据流中的中位数"><a href="#8-数据流中的中位数" class="headerlink" title="(8)数据流中的中位数"></a>(8)数据流中的中位数</h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。我们使用Insert()方法读取数据流，使用GetMedian()方法获取当前读取数据的中位数。</p>
+<h4 id="java-7"><a href="#java-7" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//使用一个list获取数据流，获取中位数时进行排序处理</span><br><span class="line">List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">public void Insert(Integer num) &#123;</span><br><span class="line">    list.add(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Double <span class="function"><span class="title">GetMedian</span></span>() &#123;</span><br><span class="line">    Collections.<span class="built_in">sort</span>(list);</span><br><span class="line">    <span class="keyword">if</span>(list.size()%2 == 1)</span><br><span class="line">        <span class="built_in">return</span> Double.valueOf(list.get(list.size()/2));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">return</span> (list.get(list.size()/2-1)+list.get(list.size()/2))/2.0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//使用优先队列处理，效率更高</span><br><span class="line">private PriorityQueue&lt;Integer&gt; leftQ = new PriorityQueue&lt;&gt;();</span><br><span class="line">private PriorityQueue&lt;Integer&gt; rightQ = new PriorityQueue&lt;&gt;((o1,o2) -&gt; o2-o1);</span><br><span class="line">private boolean isOdd = false;</span><br><span class="line">public void Insert(Integer num) &#123;</span><br><span class="line">    if(isOdd)&#123;</span><br><span class="line">        leftQ.add(num); //左右互搏</span><br><span class="line">        rightQ.add(leftQ.poll());</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        rightQ.add(num);</span><br><span class="line">        leftQ.add(rightQ.poll());</span><br><span class="line">    &#125;</span><br><span class="line">    isOdd = !isOdd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Double <span class="function"><span class="title">GetMedian</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span>(isOdd)</span><br><span class="line">        <span class="built_in">return</span> Double.valueOf(leftQ.peek());</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">return</span> (leftQ.peek()+rightQ.peek())/2.0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-7"><a href="#思路-总结-7" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>第一种方法不多说，只要注意index-1常识即可，比较容易。<br>第二种利用优先队列的方法，是利用一个升序和一个降序优先队列（小顶堆和大顶堆）存储数据流，控制两个优先队列长度差不超过1（你加一来我加一）。<br>从而将中位数一直暴露在两个堆的堆顶（注意奇偶情况）。<br><strong>注意有一个左右互搏的操作，是用来确保两个堆中的数据没有大小交错的情况产生</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/algorithm-tree/" rel="tag"># algorithm-tree</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/08/20200208-offer/" rel="prev" title="STOffer-Linkedlist">
+      <i class="fa fa-chevron-left"></i> STOffer-Linkedlist
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/17/20200217-offer/" rel="next" title="STOffer-Stack&&Queue">
+      STOffer-Stack&&Queue <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">(1)重建二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">(2)二叉树的下一个节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">2.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">(3)对称的二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">3.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%AC%A1%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">4.</span> <span class="nav-text">(4)按之字形次序打印二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-3"><span class="nav-number">4.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-3"><span class="nav-number">4.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C"><span class="nav-number">5.</span> <span class="nav-text">(5)把二叉树打印成多行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-4"><span class="nav-number">5.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-4"><span class="nav-number">5.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.</span> <span class="nav-text">(6)序列化二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-5"><span class="nav-number">6.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-5"><span class="nav-number">6.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">(7)二叉搜索树的第k个节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-6"><span class="nav-number">7.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-6"><span class="nav-number">7.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">(8)数据流中的中位数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-7"><span class="nav-number">8.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-7"><span class="nav-number">8.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicolas Qing"
+      src="/images/dango.jpg">
+  <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+  <div class="site-description" itemprop="description">just have fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/281xh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;281xh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:375411873@qq.com" title="E-Mail → mailto:375411873@qq.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

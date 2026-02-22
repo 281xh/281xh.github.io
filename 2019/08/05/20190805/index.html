@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="什么是贝叶斯英国数学家托马斯·贝叶斯在一篇论文中，为了解决一个“逆概率”问题，而提出了贝叶斯定理。 在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，比如举办了一个抽奖，抽奖桶里有10个球，其中2个白球，8个黑球，抽到白球就算你中奖。你伸手进去随便摸出1颗球，摸出中奖球的概率是多大。（2&#x2F;10）而贝叶斯在他的文章中是为了解决一个“逆概率”的问题。比如上面的例子我们并不知道抽奖桶里有什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贝叶斯理解+实例">
+<meta property="og:url" content="http://example.com/2019/08/05/20190805/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="什么是贝叶斯英国数学家托马斯·贝叶斯在一篇论文中，为了解决一个“逆概率”问题，而提出了贝叶斯定理。 在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，比如举办了一个抽奖，抽奖桶里有10个球，其中2个白球，8个黑球，抽到白球就算你中奖。你伸手进去随便摸出1颗球，摸出中奖球的概率是多大。（2&#x2F;10）而贝叶斯在他的文章中是为了解决一个“逆概率”的问题。比如上面的例子我们并不知道抽奖桶里有什">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/20190805/bys.jpg">
+<meta property="og:image" content="http://example.com/images/20190805/wan.jpg">
+<meta property="og:image" content="http://example.com/images/20190805/bys1.jpg">
+<meta property="og:image" content="http://example.com/images/20190805/bys3.jpg">
+<meta property="og:image" content="http://example.com/images/20190805/bys2.jpg">
+<meta property="article:published_time" content="2019-08-05T09:45:26.000Z">
+<meta property="article:modified_time" content="2026-02-22T14:23:48.108Z">
+<meta property="article:author" content="Nicolas Qing">
+<meta property="article:tag" content="knowledge">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/20190805/bys.jpg">
+
+<link rel="canonical" href="http://example.com/2019/08/05/20190805/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>贝叶斯理解+实例 | SQ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SQ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">good to see you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/05/20190805/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dango.jpg">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content="just have fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          贝叶斯理解+实例
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-05 17:45:26" itemprop="dateCreated datePublished" datetime="2019-08-05T17:45:26+08:00">2019-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-02-22 22:23:48" itemprop="dateModified" datetime="2026-02-22T22:23:48+08:00">2026-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="什么是贝叶斯"><a href="#什么是贝叶斯" class="headerlink" title="什么是贝叶斯"></a>什么是贝叶斯</h3><p>英国数学家托马斯·贝叶斯在一篇论文中，为了解决一个“逆概率”问题，而提出了贝叶斯定理。</p>
+<p>在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，比如举办了一个抽奖，抽奖桶里有10个球，其中2个白球，8个黑球，抽到白球就算你中奖。你伸手进去随便摸出1颗球，摸出中奖球的概率是多大。（2&#x2F;10）<br>而贝叶斯在他的文章中是为了解决一个“逆概率”的问题。比如上面的例子我们并不知道抽奖桶里有什么，而是摸出一个球，通过观察这个球的颜色，来预测这个桶里里白色球和黑色球的比例。<br><img src="/images/20190805/bys.jpg" alt="贝叶斯公式"></p>
+<h3 id="贝叶斯案例"><a href="#贝叶斯案例" class="headerlink" title="贝叶斯案例"></a>贝叶斯案例</h3><p>有两个一模一样的碗<br>1号碗里有：30个巧克力和10个水果糖<br>2号碗里有：20个巧克力和20个水果糖<br><img src="/images/20190805/wan.jpg"><br>然后把碗盖住。随机选择一个碗，从里面摸出了一个巧克力。<br>问题：这颗巧克力来自1号碗的概率是多少？（即，在随即取一个碗并从中摸出了一个巧克力的情况下，这个碗是1号碗的概率）</p>
+<h4 id="第1步，分解问题"><a href="#第1步，分解问题" class="headerlink" title="第1步，分解问题"></a>第1步，分解问题</h4><p>1）要求解的问题：取出的巧克力，来自1号碗的概率是多少？<br>来自1号碗记为事件A1，来自2号碗记为事件A2<br>取出的是巧克力，记为事件B，<br>那么要求的问题就是P(A1|B)，即取出的是巧克力，来自1号碗的概率</p>
+<p>2）已知信息：<br>1号碗里有30个巧克力和10个水果糖<br>2号碗里有20个巧克力和20个水果糖<br>取出的是巧克力</p>
+<h4 id="第2步，应用贝叶斯定理"><a href="#第2步，应用贝叶斯定理" class="headerlink" title="第2步，应用贝叶斯定理"></a>第2步，应用贝叶斯定理</h4><p><img src="/images/20190805/bys1.jpg"><br>1）求先验概率<br>由于两个碗是一样的，所以在得到新信息（取出是巧克力之前），这两个碗被选中的概率相同，因此P(A1)&#x3D;P(A2)&#x3D;0.5,(其中A1表示来自1号碗，A2表示来自2号碗)<br>这个概率就是’先验概率’，即没有做实验之前，来自一号碗、二号碗的概率都是0.5。</p>
+<p>2）求可能性函数<br>P(B|A1)&#x2F;P(B)<br>其中，P(B|A1)表示从一号碗中(A1)取出巧克力(B)的概率。<br>因为1号碗里有30个水果糖和10个巧克力，所以P(B|A1)&#x3D;30&#x2F;(30+10)&#x3D;75%<br><img src="/images/20190805/bys3.jpg"><br>P(B)&#x3D;P(B|A1)P(A1)+P(B|A2)P(A2)&#x3D;0.75*0.5+20&#x2F;(20+20)*0.5&#x3D;62.5%<br>所以，可能性函数P(A1|B)&#x2F;P(B)&#x3D;75%&#x2F;62.5%&#x3D;1.2<br>可能性函数&gt;1.表示新信息B对事情A1的可能性增强了。</p>
+<p>3）带入贝叶斯公式求后验概率<br>将上述计算结果，带入贝叶斯定理，即可算出P(A1|B)&#x3D;60%<br>这个例子中我们需要关注的是约束条件：抓出的是巧克力。如果没有这个约束条件在，来自一号碗这件事的概率就是50%了，因为巧克力的分布不均把概率从50%提升到60%。<br><img src="/images/20190805/bys2.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/knowledge/" rel="tag"># knowledge</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/02/20190802-lc236/" rel="prev" title="二叉树的最近公共祖先 lc236">
+      <i class="fa fa-chevron-left"></i> 二叉树的最近公共祖先 lc236
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/06/20190806-lc50/" rel="next" title="Pow(x,n) lc50">
+      Pow(x,n) lc50 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="nav-number">1.</span> <span class="nav-text">什么是贝叶斯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A1%88%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">贝叶斯案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC1%E6%AD%A5%EF%BC%8C%E5%88%86%E8%A7%A3%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">第1步，分解问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC2%E6%AD%A5%EF%BC%8C%E5%BA%94%E7%94%A8%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">第2步，应用贝叶斯定理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicolas Qing"
+      src="/images/dango.jpg">
+  <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+  <div class="site-description" itemprop="description">just have fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/281xh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;281xh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:375411873@qq.com" title="E-Mail → mailto:375411873@qq.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

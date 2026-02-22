@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="(1)矩阵中的路径题目描述请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STOffer-Recall">
+<meta property="og:url" content="http://example.com/2020/02/26/20200226-offer/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="(1)矩阵中的路径题目描述请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/20200226offer/111.png">
+<meta property="article:published_time" content="2020-02-26T06:53:43.000Z">
+<meta property="article:modified_time" content="2026-02-22T14:28:26.727Z">
+<meta property="article:author" content="Nicolas Qing">
+<meta property="article:tag" content="algorithm-recall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/20200226offer/111.png">
+
+<link rel="canonical" href="http://example.com/2020/02/26/20200226-offer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>STOffer-Recall | SQ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SQ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">good to see you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/26/20200226-offer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dango.jpg">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content="just have fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STOffer-Recall
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-26 14:53:43" itemprop="dateCreated datePublished" datetime="2020-02-26T14:53:43+08:00">2020-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-02-22 22:28:26" itemprop="dateModified" datetime="2026-02-22T22:28:26+08:00">2026-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STOffer/" itemprop="url" rel="index"><span itemprop="name">STOffer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-矩阵中的路径"><a href="#1-矩阵中的路径" class="headerlink" title="(1)矩阵中的路径"></a>(1)矩阵中的路径</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如<br><img src="/images/20200226offer/111.png"><br>矩阵中包含一条字符串”bcced”的路径，但是矩阵中不包含”abcb”路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public boolean hasPath(char[] matrix, int rows, int cols, char[] str)</span><br><span class="line">    &#123;</span><br><span class="line">        boolean[] flag = new boolean[matrix.length];</span><br><span class="line">        <span class="keyword">for</span>(int i=0; i&lt;rows; i++)</span><br><span class="line">            <span class="keyword">for</span>(int j=0; j&lt;cols; j++)</span><br><span class="line">                <span class="keyword">if</span>(Judge(matrix,rows,cols,i,j,str,0,flag))</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    public boolean Judge(char[] matrix,int rows,int cols,int i,int j,char[] str,int k,boolean[] flag)&#123;</span><br><span class="line">        int index = i*cols+j;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;0 || i&gt;=rows || j&lt;0 || j&gt;=cols || matrix[index]!=str[k] || flag[index]==<span class="literal">true</span>)</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(k == str.length-1)</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        flag[index] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(Judge(matrix,rows,cols,i+1,j,str,k+1,flag)</span><br><span class="line">           || Judge(matrix,rows,cols,i-1,j,str,k+1,flag)</span><br><span class="line">           || Judge(matrix,rows,cols,i,j+1,str,k+1,flag)</span><br><span class="line">           || Judge(matrix,rows,cols,i,j-1,str,k+1,flag)</span><br><span class="line">        )</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        flag[index] = <span class="literal">false</span>;//递归树收束，要做还原操作！</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结"><a href="#思路-总结" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/questionTerminal/c61c6999eecb4b8f88a98f66b273a3cc?f=discussion">https://www.nowcoder.com/questionTerminal/c61c6999eecb4b8f88a98f66b273a3cc?f=discussion</a><br>来源：牛客网</p>
+<p>回溯<br>基本思想：<br>0.根据给定数组，初始化一个标志位数组，初始化为false，表示未走过，true表示已经走过，不能走第二次<br>1.根据行数和列数，遍历数组，先找到一个与str字符串的第一个元素相匹配的矩阵元素，进入judge<br>2.根据i和j先确定一维数组的位置，因为给定的matrix是一个一维数组<br>3.确定递归终止条件：越界，当前找到的矩阵值不等于数组对应位置的值，已经走过的，这三类情况，都直接false，说明这条路不通<br>4.若k，就是待判定的字符串str的索引已经判断到了最后一位，此时说明是匹配成功的<br>5.下面就是本题的精髓，递归不断地寻找周围四个格子是否符合条件，只要有一个格子符合条件，就继续再找这个符合条件的格子的四周是否存在符合条件的格子，直到k到达末尾或者不满足递归条件就停止。<br>6.走到这一步，说明本次是不成功的，我们要还原一下标志位数组index处的标志位，进入下一轮的判断。</p>
+<h3 id="2-机器人的运动范围"><a href="#2-机器人的运动范围" class="headerlink" title="(2)机器人的运动范围"></a>(2)机器人的运动范围</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 &#x3D; 18。但是，它不能进入方格（35,38），因为3+5+3+8 &#x3D; 19。请问该机器人能够达到多少个格子？</p>
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int movingCount(int threshold, int rows, int cols)</span><br><span class="line">&#123;</span><br><span class="line">    boolean[][] flag = new boolean[rows][cols];</span><br><span class="line">    <span class="built_in">return</span> Count(threshold,rows,cols,0,0,flag);</span><br><span class="line">&#125;</span><br><span class="line">public int Count(int threshold,int rows,int cols,int x,int y,boolean[][] flag)&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;0||x&gt;=rows||y&lt;0||y&gt;=cols||flag[x][y]==<span class="literal">true</span>||Sum(x)+Sum(y)&gt;threshold)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    flag[x][y]=<span class="literal">true</span>; //记录当前位置</span><br><span class="line">    <span class="built_in">return</span> 1+Count(threshold,rows,cols,x+1,y,flag)+Count(threshold,rows,cols,x,y+1,flag);</span><br><span class="line">&#125;</span><br><span class="line">public int Sum(int n)&#123;</span><br><span class="line">    int <span class="built_in">sum</span> = 0;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;0)&#123;</span><br><span class="line">        <span class="built_in">sum</span>+=n%10;</span><br><span class="line">        n = n/10;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">sum</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-1"><a href="#思路-总结-1" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p><strong>一定要记得写记录数组，不然无限递归</strong><br>tips：注意与上题区别，是否需要做记录数组flag的回退操作。</p>
+<h3 id="3-剪绳子"><a href="#3-剪绳子" class="headerlink" title="(3)剪绳子"></a>(3)剪绳子</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为k[0],k[1],…,k[m]。请问k[0]xk[1]x…xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public int cutRope(int target) &#123;</span><br><span class="line">    // n&lt;=3的情况，m&gt;1必须要分段，例如：3必须分成1、2；1、1、1 ，n=3最大分段乘积是2,</span><br><span class="line">    <span class="keyword">if</span>(target==1 || target==2)</span><br><span class="line">        <span class="built_in">return</span> 1;</span><br><span class="line">    <span class="keyword">if</span>(target == 3)</span><br><span class="line">        <span class="built_in">return</span> 2;</span><br><span class="line">    int[] dp = new int[target+1];</span><br><span class="line">        /*</span><br><span class="line">    下面3行是n&gt;=4的情况，跟n&lt;=3不同，4可以分很多段，比如分成1、3，</span><br><span class="line">    这里的3可以不需要再分了，因为3分段最大才2，不分就是3。记录最大的。</span><br><span class="line">        */</span><br><span class="line">    dp[1] = 1;</span><br><span class="line">    dp[2] = 2;</span><br><span class="line">    dp[3] = 3;</span><br><span class="line">    int res = 0;//记录最大值</span><br><span class="line">    <span class="keyword">for</span>(int i=4;i&lt;dp.length;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=1; j&lt;=i/2; j++)&#123;</span><br><span class="line">            res = Math.max(res,dp[j]*dp[i-j]);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> dp[target];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public int cutRope(int target) &#123;</span><br><span class="line">    <span class="keyword">if</span>(target==2 || target==3)</span><br><span class="line">        <span class="built_in">return</span> target-1;</span><br><span class="line">    int res = 1;</span><br><span class="line">    <span class="keyword">while</span>(target &gt; 4)&#123;</span><br><span class="line">        target-=3;</span><br><span class="line">        res*=3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res*target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-2"><a href="#思路-总结-2" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>方法一动态规划。<br>方法二数学运算。<br>本体重点在于3这个点，小于等于3的数分段乘积都不如本身长，大于3的数分段乘积就要大于等于本身。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/algorithm-recall/" rel="tag"># algorithm-recall</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/25/20200225-offer/" rel="prev" title="STOffer-Mess3">
+      <i class="fa fa-chevron-left"></i> STOffer-Mess3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/01/20200301-tec/" rel="next" title="PES-Gmair权限划分">
+      PES-Gmair权限划分 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="nav-number">1.</span> <span class="nav-text">(1)矩阵中的路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4"><span class="nav-number">2.</span> <span class="nav-text">(2)机器人的运动范围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">2.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%89%AA%E7%BB%B3%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">(3)剪绳子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">3.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicolas Qing"
+      src="/images/dango.jpg">
+  <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+  <div class="site-description" itemprop="description">just have fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/281xh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;281xh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:375411873@qq.com" title="E-Mail → mailto:375411873@qq.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

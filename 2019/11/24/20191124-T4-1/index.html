@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Description对给定的n个任务与n个人之间的成本矩阵完成成本最低的任务分配策略。 Input输入：第一行为用例个数，之后为每一个用例；用例的第一行为任务个数，即n；用例的第二行为使用逗号隔开的人员完成任务的成本；每一个成本描述包括人员序号、任务序号和成本，使用空格隔开。人员序号和任务序号都是从1到n的整数，序号出现的次序没有固定规则。 Output">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分配问题-T4-1">
+<meta property="og:url" content="http://example.com/2019/11/24/20191124-T4-1/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="Description对给定的n个任务与n个人之间的成本矩阵完成成本最低的任务分配策略。 Input输入：第一行为用例个数，之后为每一个用例；用例的第一行为任务个数，即n；用例的第二行为使用逗号隔开的人员完成任务的成本；每一个成本描述包括人员序号、任务序号和成本，使用空格隔开。人员序号和任务序号都是从1到n的整数，序号出现的次序没有固定规则。 Output">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-24T09:20:39.000Z">
+<meta property="article:modified_time" content="2019-12-15T06:22:15.430Z">
+<meta property="article:author" content="Nicolas Qing">
+<meta property="article:tag" content="algorithm-backtracking">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/11/24/20191124-T4-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>分配问题-T4-1 | SQ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SQ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">good to see you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/24/20191124-T4-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dango.jpg">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content="just have fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          分配问题-T4-1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-24 17:20:39" itemprop="dateCreated datePublished" datetime="2019-11-24T17:20:39+08:00">2019-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-15 14:22:15" itemprop="dateModified" datetime="2019-12-15T14:22:15+08:00">2019-12-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-practise/" itemprop="url" rel="index"><span itemprop="name">algorithm practise</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>对给定的n个任务与n个人之间的成本矩阵完成成本最低的任务分配策略。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>输入：第一行为用例个数，之后为每一个用例；用例的第一行为任务个数，即n；用例的第二行为使用逗号隔开的人员完成任务的成本；每一个成本描述包括人员序号、任务序号和成本，使用空格隔开。人员序号和任务序号都是从1到n的整数，序号出现的次序没有固定规则。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出：每一个用例输出一行，从序号为1的人员开始，给出其分配的任务序号，使用空格隔开；使用逗号将多个解隔开。结果按照人员分配的任务序号大小排，第一个人员的任务序号大的放在前面，如果相同则看第二个人员的任务，以此类推。</p>
+<h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><p>Sample Input 1<br>1<br>4<br>2 1 6,1 2 2,1 3 7,1 4 8,1 1 9,2 2 4,2 3 3,2 4 7,3 1 5,3 2 8,3 3 1,3 4 8,4 1 7,4 2 6,4 3 9,4 4 4</p>
+<p>Sample Output 1<br>2 1 3 4</p>
+<h3 id="java-回溯-基本数据操作"><a href="#java-回溯-基本数据操作" class="headerlink" title="java-回溯+基本数据操作"></a>java-回溯+基本数据操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class T1 &#123;</span><br><span class="line">	static void distribute(List&lt;int[]&gt; t, int n) &#123;</span><br><span class="line">		int[][] matrix = new int[n][n];</span><br><span class="line">		int[] temp = new int[n];</span><br><span class="line">		int minCount = Integer.MAX_VALUE;</span><br><span class="line">		<span class="keyword">for</span>(int i=0;i&lt;n;i++)</span><br><span class="line">			temp[i] = i;</span><br><span class="line">		<span class="keyword">for</span>(int[] x:t)</span><br><span class="line">			matrix[x[0]-1][x[1]-1] = x[2];</span><br><span class="line">		List&lt;int[]&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		change(list,temp,0);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int[] tmp:list) &#123;</span><br><span class="line">			int count = 0;</span><br><span class="line">			<span class="keyword">for</span>(int i=0;i&lt;n;i++)</span><br><span class="line">				count+=matrix[i][tmp[i]];</span><br><span class="line">			minCount = Math.min(minCount, count);</span><br><span class="line">		&#125;</span><br><span class="line">		List&lt;int[]&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(int[] tmp:list) &#123;</span><br><span class="line">			int count = 0;</span><br><span class="line">			<span class="keyword">for</span>(int i=0;i&lt;n;i++)</span><br><span class="line">				count+=matrix[i][tmp[i]];</span><br><span class="line">			<span class="keyword">if</span>(count == minCount) &#123;</span><br><span class="line">				int[] t1 = Arrays.copyOf(tmp, tmp.length);</span><br><span class="line">				res.add(t1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//print</span><br><span class="line">		List&lt;String&gt; res1 = new ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(int[] x:res) &#123;</span><br><span class="line">			StringBuffer sb = new StringBuffer();</span><br><span class="line">			<span class="keyword">for</span>(int i=0;i&lt;x.length-1;i++) </span><br><span class="line">				sb.append((x[i]+<span class="number">1</span>)+&quot; &quot;);</span><br><span class="line">			sb.append(x[x.length-<span class="number">1</span>]+<span class="number">1</span>);</span><br><span class="line">			res1.add(sb.toString());</span><br><span class="line">		&#125;</span><br><span class="line">		Collections.<span class="built_in">sort</span>(res1,Collections.reverseOrder());</span><br><span class="line">		String p =<span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">if</span>(res1.size() == 1)</span><br><span class="line">			p += res1.get(0);</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(int i=0;i&lt;res1.size()-1;i++) </span><br><span class="line">				p+=res1.get(i)+<span class="string">&quot;,&quot;</span>;</span><br><span class="line">			p+=res1.get(res1.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(p);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner scan = new Scanner(System.<span class="keyword">in</span>);</span><br><span class="line">		int testcase = Integer.parseInt(scan.nextLine());</span><br><span class="line">		<span class="keyword">for</span>(int z=0; z&lt;testcase; z++) &#123;</span><br><span class="line">			//scan.nextLine();</span><br><span class="line">			int n = Integer.parseInt(scan.nextLine());</span><br><span class="line">			String[] tmp = scan.nextLine().<span class="built_in">split</span>(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">			List&lt;int[]&gt; t = deal(tmp);</span><br><span class="line">			distribute(t,n);</span><br><span class="line">		&#125;</span><br><span class="line">		scan.close();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	static List deal(String[] tmp)&#123;</span><br><span class="line">		List&lt;int[]&gt; t = new ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(String s:tmp) &#123;</span><br><span class="line">			String[] a = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">			t.add(StrTurnInt(a));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">	//turn String[] to int[]</span><br><span class="line">    static int[] StrTurnInt(String[] num1)&#123;</span><br><span class="line">        int[] num = new int[num1.length];</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;num1.length;i++)</span><br><span class="line">            num[i]=Integer.parseInt(num1[i]);</span><br><span class="line">        <span class="built_in">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">    //回溯全排列</span><br><span class="line">    static void change(List&lt;int[]&gt; list, int[] temp,int start)&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == temp.length)&#123;</span><br><span class="line">            int[] z = Arrays.copyOf(temp, temp.length);</span><br><span class="line">            list.add(z);</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=start;i&lt;temp.length;i++)&#123;</span><br><span class="line">            int t = temp[i];</span><br><span class="line">			temp[i] = temp[start];</span><br><span class="line">			temp[start] = t;</span><br><span class="line">			change(list,temp,start+1);</span><br><span class="line">			t = temp[i];</span><br><span class="line">			temp[i] = temp[start];</span><br><span class="line">			temp[start] = t; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结-思路"><a href="#总结-思路" class="headerlink" title="总结&amp;思路"></a>总结&amp;思路</h3><p>本题主要考察回溯法和基本数据操作，较难。我们需要通过创建一个n*n的矩阵用来存储分配成本，然后考察所有的分配情况并获取其中的最小成本值。</p>
+<p>难点在于考察所有的分配情况，这里我们通过回溯法获取人员任务分配的全排列可能情况，然后帮助进行查找最小成本值。</p>
+<p>找到最小成本值后再遍历一遍找出所有最小成本的方案。</p>
+<p>最后还要注意输出格式问题，校园oj格式比较麻烦，要细致注意输出格式。</p>
+<p>附上回溯法获得数组全排列，可作为模板熟记</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void change(List&lt;int[]&gt; list, int[] temp,int start)&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == temp.length)&#123;</span><br><span class="line">            int[] z = Arrays.copyOf(temp, temp.length);//数组作为基本数据结构可以用这种方法进行深拷贝</span><br><span class="line">            list.add(z);</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=start;i&lt;temp.length;i++)&#123;</span><br><span class="line">            int t = temp[i];</span><br><span class="line">			temp[i] = temp[start];</span><br><span class="line">			temp[start] = t;</span><br><span class="line">			change(list,temp,start+1);</span><br><span class="line">			t = temp[i];</span><br><span class="line">			temp[i] = temp[start];</span><br><span class="line">			temp[start] = t; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/algorithm-backtracking/" rel="tag"># algorithm-backtracking</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/18/20191118-T3-8/" rel="prev" title="归并排序（递归&非递归）-T3-8">
+      <i class="fa fa-chevron-left"></i> 归并排序（递归&非递归）-T3-8
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/15/20191215/" rel="next" title="Shell排序">
+      Shell排序 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample"><span class="nav-number">4.</span> <span class="nav-text">Sample</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-%E5%9B%9E%E6%BA%AF-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">java-回溯+基本数据操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-%E6%80%9D%E8%B7%AF"><span class="nav-number">6.</span> <span class="nav-text">总结&amp;思路</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicolas Qing"
+      src="/images/dango.jpg">
+  <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+  <div class="site-description" itemprop="description">just have fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/281xh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;281xh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:375411873@qq.com" title="E-Mail → mailto:375411873@qq.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

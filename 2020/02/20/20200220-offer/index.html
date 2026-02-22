@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="(1)二进制中1的个数题目描述输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 java123456789public int NumberOf1(int n) &#123;    int count &#x3D; 0, flag &#x3D; 1;    while(flag !&#x3D; 0)&#123;        if((flag &amp; n) !&#x3D; 0) &#x2F;&#x2F;注意位运算符优先级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STOffer-Mess">
+<meta property="og:url" content="http://example.com/2020/02/20/20200220-offer/index.html">
+<meta property="og:site_name" content="SQ Blog">
+<meta property="og:description" content="(1)二进制中1的个数题目描述输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。 java123456789public int NumberOf1(int n) &#123;    int count &#x3D; 0, flag &#x3D; 1;    while(flag !&#x3D; 0)&#123;        if((flag &amp; n) !&#x3D; 0) &#x2F;&#x2F;注意位运算符优先级">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-20T07:45:35.000Z">
+<meta property="article:modified_time" content="2020-02-21T07:09:43.690Z">
+<meta property="article:author" content="Nicolas Qing">
+<meta property="article:tag" content="algorithm-mess">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/02/20/20200220-offer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>STOffer-Mess | SQ Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SQ Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">good to see you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/20/20200220-offer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dango.jpg">
+      <meta itemprop="name" content="Nicolas Qing">
+      <meta itemprop="description" content="just have fun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SQ Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STOffer-Mess
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-20 15:45:35" itemprop="dateCreated datePublished" datetime="2020-02-20T15:45:35+08:00">2020-02-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-21 15:09:43" itemprop="dateModified" datetime="2020-02-21T15:09:43+08:00">2020-02-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STOffer/" itemprop="url" rel="index"><span itemprop="name">STOffer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-二进制中1的个数"><a href="#1-二进制中1的个数" class="headerlink" title="(1)二进制中1的个数"></a>(1)二进制中1的个数</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">    int count = 0, flag = 1;</span><br><span class="line">    <span class="keyword">while</span>(flag != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>((flag &amp; n) != <span class="number">0</span>) //注意位运算符优先级</span><br><span class="line">            count++;</span><br><span class="line">        flag = flag &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int NumberOf1(int n) &#123;</span><br><span class="line">    int count = 0;</span><br><span class="line">    <span class="keyword">while</span>(n != 0)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        n = (n - 1) &amp; n; //n最右边的1被消去了</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结"><a href="#思路-总结" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>见注释，略。</p>
+<h3 id="2-数值的整数次方"><a href="#2-数值的整数次方" class="headerlink" title="(2)数值的整数次方"></a>(2)数值的整数次方</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+<p>保证base和exponent不同时为0</p>
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">    double res = 1;</span><br><span class="line">    int n = exponent;</span><br><span class="line">    <span class="keyword">if</span>(exponent == 0) <span class="built_in">return</span> 1;</span><br><span class="line">    <span class="keyword">if</span>(exponent &lt; 0) n = -n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(n != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%2 == 1)//偶数时这个<span class="keyword">if</span>只用最后一次，奇数时这个<span class="keyword">if</span>第一次和最后一次用两次</span><br><span class="line">            res*=base;</span><br><span class="line">        base*=base;</span><br><span class="line">        n = n/2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> exponent&gt;0?res:1/res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public double Power(double base, int exponent) &#123;</span><br><span class="line">    <span class="keyword">if</span>(exponent == 0) <span class="built_in">return</span> 1;</span><br><span class="line">    <span class="keyword">if</span>(exponent &lt; 0)&#123;</span><br><span class="line">        exponent = -exponent;</span><br><span class="line">        base = 1/base;</span><br><span class="line">    &#125;</span><br><span class="line">    double res = 1;</span><br><span class="line">    <span class="keyword">while</span>(exponent != 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>(exponent%2 == 1)</span><br><span class="line">            res*=base;</span><br><span class="line">        base*=base;</span><br><span class="line">        exponent/=2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-1"><a href="#思路-总结-1" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>见注释，略。</p>
+<h3 id="3-调整数组顺序使奇数位于偶数前面"><a href="#3-调整数组顺序使奇数位于偶数前面" class="headerlink" title="(3)调整数组顺序使奇数位于偶数前面"></a>(3)调整数组顺序使奇数位于偶数前面</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//借助辅助空间</span><br><span class="line">public void reOrderArray(int [] array) &#123;</span><br><span class="line">    List&lt;Integer&gt; odd = new ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; even = new ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;array.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>((array[i]&amp;<span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">            odd.add(array[i]);</span><br><span class="line">        else</span><br><span class="line">            even.add(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=<span class="number">0</span>; i&lt;odd.size(); i++)</span><br><span class="line">        array[i] = odd.get(i);</span><br><span class="line">    for(int i=<span class="number">0</span>; i&lt;even.size(); i++)</span><br><span class="line">        array[i+odd.size()] = even.get(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//不借助辅助空间，但时间效率增加</span><br><span class="line">public void reOrderArray(int [] array) &#123;//冒泡</span><br><span class="line">    <span class="keyword">for</span>(int i=array.length-1; i&gt;=0; i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int j=0; j&lt;i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[j]%2==0 &amp;&amp; array[j+1]%2==1)&#123;</span><br><span class="line">                int tmp = array[j];</span><br><span class="line">                array[j] = array[j+1];</span><br><span class="line">                array[j+1] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public void reOrderArray(int [] array) &#123;//插入</span><br><span class="line">        int start = 0, index = 0;</span><br><span class="line">        <span class="keyword">while</span>(index &lt; array.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[index]%2 == 1)&#123;</span><br><span class="line">                int tmp = array[index];</span><br><span class="line">                <span class="keyword">for</span>(int i=index; i&gt;start; i--)</span><br><span class="line">                    array[i] = array[i-1];</span><br><span class="line">                array[start] = tmp;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-2"><a href="#思路-总结-2" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>略。</p>
+<h3 id="4-链表中倒数第k个结点"><a href="#4-链表中倒数第k个结点" class="headerlink" title="(4)链表中倒数第k个结点"></a>(4)链表中倒数第k个结点</h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个链表，输出该链表中倒数第k个结点。</p>
+<h4 id="java-3"><a href="#java-3" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public ListNode FindKthToTail(ListNode <span class="built_in">head</span>,int k) &#123;</span><br><span class="line">    ListNode p1 = <span class="built_in">head</span>, p2 = <span class="built_in">head</span>;</span><br><span class="line">    int i = 0;</span><br><span class="line">    <span class="keyword">for</span>( ; p2!=null; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= k)</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">        p2 = p2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> i&gt;=k ? p1:null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-3"><a href="#思路-总结-3" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>目前最优解：设置两个指针，p1，p2，先让p2走k步，然后再一起走，直到p2为null时，p1即为倒数第k个节点。<br>可行解：使用计数或者倒置链表的方法。</p>
+<h3 id="5-反转链表"><a href="#5-反转链表" class="headerlink" title="(5)反转链表"></a>(5)反转链表</h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个链表，反转链表后，输出新链表的表头。</p>
+<h4 id="java-4"><a href="#java-4" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public ListNode ReverseList(ListNode <span class="built_in">head</span>) &#123;</span><br><span class="line">    ListNode pre = null, cur = <span class="built_in">head</span>;</span><br><span class="line">    <span class="keyword">while</span>(cur != null)&#123;</span><br><span class="line">        ListNode tmp = cur.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-4"><a href="#思路-总结-4" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>熟记，略。</p>
+<h3 id="6-合并两个排序的链表"><a href="#6-合并两个排序的链表" class="headerlink" title="(6)合并两个排序的链表"></a>(6)合并两个排序的链表</h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p>
+<h4 id="java-5"><a href="#java-5" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//非递归</span><br><span class="line">public ListNode Merge(ListNode list1,ListNode list2) &#123;</span><br><span class="line">    ListNode dummy = new ListNode(-1), index = dummy;</span><br><span class="line">    <span class="keyword">while</span>(list1!=null &amp;&amp; list2!=null)&#123;</span><br><span class="line">        <span class="keyword">if</span>(list1.val &lt; list2.val)&#123;</span><br><span class="line">            index.next = new ListNode(list1.val);</span><br><span class="line">            list1 = list1.next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            index.next = new ListNode(list2.val);</span><br><span class="line">            list2 = list2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(list1 != null)&#123;</span><br><span class="line">        index.next = new ListNode(list1.val);</span><br><span class="line">        list1 = list1.next;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(list2 != null)&#123;</span><br><span class="line">        index.next = new ListNode(list2.val);</span><br><span class="line">        list2 = list2.next;</span><br><span class="line">        index = index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//递归</span><br><span class="line">public ListNode Merge(ListNode list1,ListNode list2) &#123;</span><br><span class="line">    <span class="keyword">if</span>(list1 == null)</span><br><span class="line">        <span class="built_in">return</span> list2;</span><br><span class="line">    <span class="keyword">if</span>(list2 == null)</span><br><span class="line">        <span class="built_in">return</span> list1;</span><br><span class="line">    <span class="keyword">if</span>(list1.val &lt; list2.val)&#123;</span><br><span class="line">        list1.next = Merge(list1.next,list2);</span><br><span class="line">        <span class="built_in">return</span> list1;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        list2.next = Merge(list1,list2.next);</span><br><span class="line">        <span class="built_in">return</span> list2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-5"><a href="#思路-总结-5" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>熟悉递归做法，略。</p>
+<h3 id="7-树的子结构"><a href="#7-树的子结构" class="headerlink" title="(7)树的子结构"></a>(7)树的子结构</h3><h4 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p>
+<h4 id="java-6"><a href="#java-6" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public boolean HasSubtree(TreeNode root1,TreeNode root2) &#123;</span><br><span class="line">    <span class="keyword">if</span>(root1==null || root2==null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    boolean res = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(root1.val == root2.val)</span><br><span class="line">        res = Judge(root1,root2);</span><br><span class="line">    <span class="keyword">if</span>(res == <span class="literal">false</span>)</span><br><span class="line">        res = HasSubtree(root1.left,root2) || HasSubtree(root1.right,root2);</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">public boolean Judge(TreeNode node1, TreeNode node2)&#123;</span><br><span class="line">    <span class="keyword">if</span>(node2 == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(node1 == null)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(node1.val != node2.val)</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">return</span> Judge(node1.left,node2.left) &amp;&amp; Judge(node1.right,node2.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-6"><a href="#思路-总结-6" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>注意题目是子结构，所以只要将root2对比完没有出现比对失败即可。<br>两次递归，第一次递归寻找节点相同的头节点，调用方法进行第二次递归判断是否子结构。注意中间最好使用一个布尔类型res中间值进行结果记录。</p>
+<h3 id="8-二叉树的镜像"><a href="#8-二叉树的镜像" class="headerlink" title="(8)二叉树的镜像"></a>(8)二叉树的镜像</h3><h4 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h4><p>操作给定的二叉树，将其变换为源二叉树的镜像。<br>输入描述:<br>二叉树的镜像定义：源二叉树<br>            8<br>           &#x2F;  <br>          6   10<br>         &#x2F; \  &#x2F; <br>        5  7 9 11<br>        镜像二叉树<br>            8<br>           &#x2F;  <br>          10   6<br>         &#x2F; \  &#x2F; <br>        11 9 7  5</p>
+<h4 id="java-7"><a href="#java-7" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void Mirror(TreeNode root) &#123;</span><br><span class="line">    <span class="keyword">if</span>(root == null) </span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(root.left==null &amp;&amp; root.right==null)</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    TreeNode tmp = root.left;</span><br><span class="line">    root.left = root.right;</span><br><span class="line">    root.right = tmp;</span><br><span class="line">    </span><br><span class="line">    Mirror(root.left);</span><br><span class="line">    Mirror(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-7"><a href="#思路-总结-7" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>略。</p>
+<h3 id="9-顺时针打印矩阵"><a href="#9-顺时针打印矩阵" class="headerlink" title="(9)顺时针打印矩阵"></a>(9)顺时针打印矩阵</h3><h4 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h4><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p>
+<h4 id="java-8"><a href="#java-8" class="headerlink" title="java"></a>java</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">    int n = matrix.length;</span><br><span class="line">    <span class="keyword">if</span>(n == 0)</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    int m = matrix[0].length;</span><br><span class="line">    int k = (Math.min(n,m)-1)/2+1; //层数</span><br><span class="line">    <span class="keyword">for</span>(int i=0; i&lt;k; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(int a=i; a&lt;m-i; a++)</span><br><span class="line">            res.add(matrix[i][a]);</span><br><span class="line">        <span class="keyword">for</span>(int a=i+1; a&lt;n-i; a++)</span><br><span class="line">            res.add(matrix[a][m-i-1]);</span><br><span class="line">        <span class="keyword">for</span>(int a=m-2-i; a&gt;=i &amp;&amp; n-i-1!=i; a--) //注意重复判断</span><br><span class="line">            res.add(matrix[n-1-i][a]);</span><br><span class="line">        <span class="keyword">for</span>(int a=n-2-i; a&gt;i &amp;&amp; m-i-1!=i; a--)</span><br><span class="line">            res.add(matrix[a][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路-总结-8"><a href="#思路-总结-8" class="headerlink" title="思路&amp;&amp;总结"></a>思路&amp;&amp;总结</h4><p>（1）确定层数，注意奇数偶数情况<br>（2）针对层数进行循环，循环体内是4个for遍历一组打印出当前层。<br>tip：注意后面两个for的起始受前两次输出影响要多-1，然后要进行重复判断。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/algorithm-mess/" rel="tag"># algorithm-mess</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/19/20200219-offer/" rel="prev" title="STOffer-Sort&&Recursion">
+      <i class="fa fa-chevron-left"></i> STOffer-Sort&&Recursion
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/21/20200221-offer/" rel="next" title="STOffer-Abstract">
+      STOffer-Abstract <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">(1)二进制中1的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9"><span class="nav-number">2.</span> <span class="nav-text">(2)数值的整数次方</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-1"><span class="nav-number">2.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2"><span class="nav-number">3.</span> <span class="nav-text">(3)调整数组顺序使奇数位于偶数前面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-2"><span class="nav-number">3.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">(4)链表中倒数第k个结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-3"><span class="nav-number">4.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-3"><span class="nav-number">4.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">(5)反转链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-4"><span class="nav-number">5.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-4"><span class="nav-number">5.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8"><span class="nav-number">6.</span> <span class="nav-text">(6)合并两个排序的链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-5"><span class="nav-number">6.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-5"><span class="nav-number">6.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">(7)树的子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-6"><span class="nav-number">7.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-6"><span class="nav-number">7.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F"><span class="nav-number">8.</span> <span class="nav-text">(8)二叉树的镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-7"><span class="nav-number">8.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-7"><span class="nav-number">8.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5"><span class="nav-number">9.</span> <span class="nav-text">(9)顺时针打印矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-8"><span class="nav-number">9.2.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-%E6%80%BB%E7%BB%93-8"><span class="nav-number">9.3.</span> <span class="nav-text">思路&amp;&amp;总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicolas Qing"
+      src="/images/dango.jpg">
+  <p class="site-author-name" itemprop="name">Nicolas Qing</p>
+  <div class="site-description" itemprop="description">just have fun</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/281xh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;281xh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:375411873@qq.com" title="E-Mail → mailto:375411873@qq.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicolas Qing</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
